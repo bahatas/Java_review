@@ -1,5 +1,6 @@
 package com.cybertek.stream.excercises;
 
+import com.cybertek.enums.Gender;
 import com.cybertek.enums.Status;
 import com.cybertek.oop.encapculation.User;
 import com.cybertek.oop.inheritance.Project;
@@ -20,14 +21,16 @@ public class StreamDemo {
     //Task-2
     public static List<Project> getListOfProject(Status status) {
 
-        return DataGenerator.getProjects().stream().filter(project -> project.getProjectStatus().equals(status)).collect(Collectors.toList());
+      List<Project> listOfProject = DataGenerator.getProjects();
+      return listOfProject.stream().filter(pr->pr.getProjectStatus().equals(status)).collect(Collectors.toList());
 
     }
 
 
     //Task-3
     public static List<Project> getListOfProject(User manager) {
-        return null;
+        return DataGenerator.getProjects().stream().filter(us->us.getAssignedManager().equals(manager)).
+                collect(Collectors.toList());
     }
 
 
@@ -64,21 +67,23 @@ public class StreamDemo {
 
     //Task-9
     public static List<Project> updateProjectStatus(Status oldStatus, Status newStatus) {
+       // return DataGenerator.getProjects().stream().filter(pro->pro.getProjectStatus());
         return null;
     }
 
     //Task-10
     public static List<Project> findProjectByManager(User manager) {
-        return null;
+        return DataGenerator.getProjects().stream().filter(man->man.getAssignedManager().equals(manager)).collect(Collectors.toList());
     }
 
     //Task-11 - Period
     public static Integer totalProjectDurationForManager(User manager) {
+        //return DataGenerator.getProjects().stream().filter(a->a.getAssignedManager().equals(manager)).;
         return null;
     }
 
     //Task-12
     public static long findTotalMaleInCompany() {
-        return 0;
+        return DataGenerator.getUsers().stream().filter(a->a.getGender().equals(Gender.MALE)).count();
     }
 }

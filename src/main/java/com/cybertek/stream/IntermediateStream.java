@@ -13,11 +13,11 @@ public class IntermediateStream {
 
 
         System.out.println("********* FILTER *********");
-//        FILTER
 
 
 
-        System.out.println(numbersStream.filter(number -> number % 2 != 0).count()); //5
+
+        System.out.println(numbersStream.filter(number -> number % 2 != 0||number>3).count()); //5
 
         Stream<String> strStream = Arrays.asList("Apple", "Mango", "Kiwi", "Banana", "Cherry", "Orange").stream();
 
@@ -31,8 +31,10 @@ public class IntermediateStream {
 
         Arrays.asList("Apple", "Mango", "Kiwi", "Banana","Apple", "Cherry", "Orange").stream().map(str->str.toUpperCase()).forEach(str-> System.out.println(str));
 
+        Arrays.stream(numbersArray).map(element->element+5).forEach(System.out::print);
 
 
+        System.out.println();
         System.out.println("********* DISTINCT *********");
         Arrays.asList("Apple", "Mango", "Kiwi", "Banana","Apple", "Cherry", "Orange").stream().distinct().forEach(str-> System.out.println(str));
 
