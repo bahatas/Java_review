@@ -28,20 +28,35 @@ public class BigDecimalDemo {
             BigDecimal a = BigDecimal.TEN;
             BigDecimal b = BigDecimal.valueOf(3.5);
             BigDecimal c = BigDecimal.valueOf(4);
-            BigDecimal sumResult = a.add(b);
-            System.out.println(sumResult);
-            BigDecimal sumReults2 = a.add(b).add(c);
-            System.out.println(sumReults2);
-            BigDecimal subtractResult = c.subtract(a).subtract(b);
-            System.out.println(subtractResult);
-            BigDecimal multiplyResult = c.multiply(b).multiply(a);
-            System.out.println(multiplyResult);
+
+            BigDecimal sumResult=a.add(b);
+            System.out.println("sumResult = " + sumResult);
+            BigDecimal sumResult2=b.add(a).add(c);
+            System.out.println("sumResult2 = " + sumResult2);
+            BigDecimal subtractResult=b.subtract(a);
+            System.out.println("subtractResult = " + subtractResult);
+            BigDecimal multiplyResult = a.multiply(b);
+            System.out.println("multiplyResult = " + multiplyResult);
             BigDecimal divideResult = a.divide(c);
-            System.out.println(divideResult);
-            BigDecimal divideResult2 = a.divide(b, 2);
-            System.out.println(divideResult2);
-            BigDecimal combineResult = b.multiply(c).add(a).subtract(b);
-            System.out.println(combineResult);
+            System.out.println("divideResult = " + divideResult);
+            BigDecimal divideresultWithRoundingMode = a.divide(b,2);
+            System.out.println("divideresultWithRoundingMode = " + divideresultWithRoundingMode);
+
+
+            // BigDecimal sumResult = a.add(b);
+            // System.out.println(sumResult);
+            // BigDecimal sumReults2 = a.add(b).add(c);
+            // System.out.println(sumReults2);
+            // BigDecimal subtractResult = c.subtract(a).subtract(b);
+            // System.out.println(subtractResult);
+            // BigDecimal multiplyResult = c.multiply(b).multiply(a);
+            // System.out.println(multiplyResult);
+            // BigDecimal divideResult = a.divide(c);
+            // System.out.println(divideResult);
+            // BigDecimal divideResult2 = a.divide(b, 2);
+            // System.out.println(divideResult2);
+             BigDecimal combineResult = b.multiply(c).add(a).subtract(b);
+             System.out.println(combineResult);
         }
 
     }
