@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class MapEntryDemo {
     public static void main(String[] args) {
+        System.out.println("This is a map entry class");
         // Maps store Map.Entry objects, or make them accessible via the entrySet method ---
         // a map, in general, stores (key,value) pairs in objects that belong to a class that implements this interface.
         // //Each Entry object supports getKey() and getValue methods for retrieving these.
@@ -21,6 +22,7 @@ public class MapEntryDemo {
         // Get a set of the entries
         Set set = hm.entrySet();
         // Get an iterator
+        System.out.println("this is the point of iterator");
         Iterator i = set.iterator();
         // Display elements
         while (i.hasNext()) {
