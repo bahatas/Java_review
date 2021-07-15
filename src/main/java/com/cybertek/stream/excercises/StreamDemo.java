@@ -36,12 +36,14 @@ public class StreamDemo {
 
     //Task-4
     public static List<Project> getProjectByProjectCode(String projectCode) {
-        return null;
+        return DataGenerator.getProjects().stream().filter(each->each.getProjectCode().equals(projectCode))
+                .collect(Collectors.toList());
     }
 
     //Task-5
     public static List<User> getListUsers() {
-        return null;
+        return DataGenerator.getUsers();
+
     }
 
     //Task-6
