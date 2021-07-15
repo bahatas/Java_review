@@ -43,8 +43,6 @@ public class L1_TwoSum_1 {
 
                 }
 
-                if(result[0]!=0 && result[1]!=0);
-                break;
 
             }
 
