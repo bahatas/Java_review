@@ -1,4 +1,4 @@
-package com.cybertek.leetcode;
+package com.cybertek.leetcode.array;
 
 import java.util.Arrays;
 

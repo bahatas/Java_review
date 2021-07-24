@@ -12,22 +12,28 @@ public class KidswithGreatestNumberOfCandy {
         int extraCandies = 3;
 
         System.out.println("kidsWithCandies2(candiess, extraCandies) = " + kidsWithCandies2(candiess, extraCandies));
+        System.out.println("kidsWithCandies(candiess, extraCandies) = " + kidsWithCandies(candiess, extraCandies));
 
     }
 
-    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
 
 
         List<Boolean> result = new ArrayList<>();
-        int a = 0;
-        while (a < candies.length) {
-            for (int i = 0; i < candies.length; i++) {
-                if (candies[0] + extraCandies >= candies[i])
-                    result.add(true);
+        int maxCandy = Arrays.stream(candies).max().getAsInt();
 
+        for (int i = 0; i < candies.length; i++) {
+            if (candies[i] + extraCandies >= maxCandy)
+                result.add(true);
+            else {
+                result.add(false);
             }
+
         }
-        return null;
+
+
+        return result;
+
     }
 
     public static List<Boolean> kidsWithCandies2(int[] candies, int extraCandies) {
