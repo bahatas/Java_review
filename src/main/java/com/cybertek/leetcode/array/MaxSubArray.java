@@ -22,7 +22,7 @@ public class MaxSubArray {
 
         int maxSum = nums[0];
         int currentSum = maxSum;
-        for (int i = 0; i < nums.length ; i++) {
+        for (int i = 1; i < nums.length ; i++) {
             currentSum=Math.max(nums[i]+currentSum,nums[i]);
             maxSum=Math.max(currentSum, maxSum);
         }
