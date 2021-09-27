@@ -31,10 +31,10 @@ public class KidswithGreatestNumberOfCandy {
 
         }
 
-
         return result;
 
     }
+
 
     public static List<Boolean> kidsWithCandies2(int[] candies, int extraCandies) {
 

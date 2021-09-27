@@ -57,7 +57,14 @@ public class BigDecimalDemo {
             // System.out.println(divideResult2);
              BigDecimal combineResult = b.multiply(c).add(a).subtract(b);
              System.out.println(combineResult);
+
+             if(true){
+
+             }else{
+                 return;
+             }
         }
+
 
     }
 }
