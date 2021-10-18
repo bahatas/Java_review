@@ -16,22 +16,30 @@ public class StringExample {
         String characters = "!veDJaCyd vaeo perelo xw";
         String document = "Cydeo Java Developer!";
 
-        String chars = "?><~@:}{";
-        String doc = "{}:@~<>?";
+        String chars = "docudocu";
+        String doc = "document";
 
 
         long start = System.nanoTime();
-        Instant start2 = Instant.now();
+
         System.out.println(isGenerated(characters, document));
-        long end = System.nanoTime();
-        Instant end2 = Instant.now();
-        long elapsedTime = end - start;
-        Duration elapsedTime2 = Duration.between(end2, start2);
-        System.out.println("elapsedTime = " + elapsedTime);
-        System.out.println("elapsedTime2 = " + elapsedTime2.toMillis());
-
-
         System.out.println(isGenerated(chars, doc));
+        long end = System.nanoTime();
+
+        long elapsedTime = end - start;
+
+        System.out.println("elapsedTime = " + elapsedTime);
+
+
+        long start2 = System.nanoTime();
+        System.out.println(isGenerated2(chars, doc));
+        //System.out.println(isGenerated2(characters, document));
+
+        long end2 = System.nanoTime();
+
+        long elapsedTime2 = end2 - start2;
+
+        System.out.println("elapsedTime2 = " + elapsedTime2);
 
 
     }
@@ -51,7 +59,7 @@ public class StringExample {
         /**
          * arrays sort --> O(n log(n)).
          */
-        if (chars.equals(doc)) return true;
+        if (chars.length()<doc.length()) return false;
         else {
 
             chars = chars.replace(" ", "").trim().toLowerCase();
@@ -67,24 +75,35 @@ public class StringExample {
             String sortedChar = new String(charsAr);
             String sortedDoc = new String(docAr);
 
-            return sortedChar.contains(sortedDoc);
+
+            while (sortedDoc.length()>0) {
+
+                if (sortedChar.indexOf(sortedDoc.charAt(0)) != -1){
+                    sortedDoc = sortedDoc.replace(sortedDoc.charAt(0) + "", ""); // replace all chars in sortedChars with empty string if fail return false if success return true
+                    sortedChar = sortedChar.replace(sortedChar.charAt(0) + "", ""); // replace all chars in sortedChars with empty string if fail return false if success return true
+                }
+
+
+
+            }
+
+            if (sortedDoc.length() > 0) return false;
+            else {
+                return true;
+            }
+
 
         }
 
     }
 
-    public static String sorted(String str) {
-        char[] chars = str.toCharArray();
-
-        Arrays.sort(chars);
-
-        return new String(chars);
-    }
 
     public static boolean isGenerated2(String chars, String doc) {
 /**
  * O(N) time
  */
+
+
         Map<Character, Integer> mapOfDoc = new HashMap<>();
         Map<Character, Integer> mapOfChar = new HashMap<>();
 
@@ -93,29 +112,43 @@ public class StringExample {
         char charKeyOfMap;
         int freqValOfMap = 1;
 
-        for (int i = 0; i < lengthOfChars; i++) {
-            charKeyOfMap = chars.charAt(i);
+        if (lengthOfDoc > lengthOfChars) return false;
+        else {
+            for (int i = 0; i < lengthOfChars; i++) {
+                charKeyOfMap = chars.charAt(i);
 
-            if (!mapOfChar.containsKey(charKeyOfMap))
-                mapOfChar.put(charKeyOfMap, freqValOfMap);
-            else {
-                mapOfChar.replace(charKeyOfMap,mapOfChar.get(charKeyOfMap)+1);
+                if (!mapOfChar.containsKey(charKeyOfMap))
+                    mapOfChar.put(charKeyOfMap, freqValOfMap);
+                else {
+                    mapOfChar.replace(charKeyOfMap, mapOfChar.get(charKeyOfMap) + 1);
+                }
             }
+
+            for (int i = 0; i < lengthOfDoc; i++) {
+                charKeyOfMap = doc.charAt(i);
+
+                if (!mapOfDoc.containsKey(charKeyOfMap))
+                    mapOfDoc.put(charKeyOfMap, freqValOfMap);
+                else {
+                    mapOfDoc.replace(charKeyOfMap, mapOfDoc.get(charKeyOfMap) + 1);
+                }
+            }
+
+            try {
+                for (char k : mapOfDoc.keySet()) {
+
+                    if (mapOfDoc.get(k) > mapOfChar.get(k))
+                        return false;
+
+                }
+
+            } catch (NullPointerException np) {
+                return false;
+            }
+            return true;
+
         }
 
-        for (int i = 0; i < lengthOfDoc; i++) {
-            charKeyOfMap = chars.charAt(i);
-
-            if (!mapOfDoc.containsKey(charKeyOfMap))
-                mapOfDoc.put(charKeyOfMap, freqValOfMap);
-            else {
-                mapOfDoc.replace(charKeyOfMap,mapOfDoc.get(charKeyOfMap)+1);
-            }
-        }
-
-        if(mapOfChar.)
-
-        return true;
 
     }
 
@@ -131,16 +164,14 @@ public class StringExample {
             String sortedChar = new String(charsArray);
             String sortedDoc = new String(docArray);
 
-            int freqchar=0;
-            int freqDoc=0;
+            int freqchar = 0;
+            int freqDoc = 0;
 
-            for (int i = 0; i <sortedChar.length()-1 ; i++) {
-
-
+            for (int i = 0; i < sortedChar.length() - 1; i++) {
 
 
             }
-            for (int j = 0; j < sortedDoc.length()-1; j++) {
+            for (int j = 0; j < sortedDoc.length() - 1; j++) {
 
 
             }
@@ -166,6 +197,7 @@ public class StringExample {
         while (i < charArr.length && j < docArr.length) {
             if (charArr[i++] == docArr[j]) j++;
         }
+
         return j == docArr.length;
 
     }
@@ -196,6 +228,7 @@ public class StringExample {
         }
         return true;
     }
+
 
     public static boolean canGenerate2(String characters, String document){
         if(document.equals("")) return true;

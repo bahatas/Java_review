@@ -4,7 +4,9 @@ import java.math.BigInteger;
 
 public class Automorphic {
 
-    public static void main(String[] args) {
+    public static void main(String[] arrays) {
+
+        System.out.println("arrays[0] = " + arrays.length);
 
         System.out.println("autoMorphic(13) = " + autoMorphic(25));
         System.out.println("autoMorphic(13) = " + autoMorphic(13));
@@ -14,6 +16,8 @@ public class Automorphic {
         System.out.println("autoMorphic(13) = " + autoMorphic(225));
         System.out.println("autoMorphic(13) = " + autoMorphic(425));
         System.out.println("autoMorphic(13) = " + autoMorphic(399));
+
+        System.out.println("arrays[0] = " + arrays[0]);
     }
 
     public static String autoMorphic2(int number) {

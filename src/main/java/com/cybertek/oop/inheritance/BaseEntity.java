@@ -21,5 +21,8 @@ public class BaseEntity {
     private long lastUpdateUserId;
 
 
+    public void baseEntityMethod(){
+        System.out.println("Base Entity Method is called");
+    }
 
 }

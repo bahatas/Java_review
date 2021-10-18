@@ -83,16 +83,25 @@ public class Main {
 
         BaseEntity employee2 = new Employee();
 
+        employee.baseEntityMethod();
+        employee2.baseEntityMethod();
+
+
+
+        //(Employee)employee2.employeeMethod();
+
+
+
         UserServiceImplementation userServiceImplementation = new UserService();
 
         employee.getEmployeeHours(); // this method belong to this class
 
        //  employee2.getEmployeeHours(); error cunku hangi methoda gidecegimize sol tarf karar verir
-        ((Employee)employee2).getEmployeeHours(); // dowm casting
+        ((Employee)employee2).getEmployeeHours(); // down  casting
 
 
 
-        //*************ENUM*****//
+        //*************ENUM**************//
 
         System.out.println(Gender.MALE);
         System.out.println(Status.IN_PROGRESS.getValue().substring(2));

@@ -22,7 +22,11 @@ public class Employee  extends BaseEntity {
 
 
     public void getEmployeeHours(){
-        System.out.println("40 hours a week");
+        System.out.println("40 hours a week from Employee class");
+    }
+
+    public void employeeMethodCalled(){
+        System.out.println("Employee method called");
     }
 
 
