@@ -5,10 +5,7 @@ import com.cybertek.stream.excercises.sort.Sort;
 import java.security.cert.CollectionCertStoreParameters;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class StringExample {
@@ -85,23 +82,38 @@ public class StringExample {
     }
 
     public static boolean isGenerated2(String chars, String doc) {
-        if (chars.equals(doc)) return true;
-        else {
+/**
+ * O(N) time
+ */
+        Map<Character, Integer> mapOfDoc = new HashMap<>();
+        Map<Character, Integer> mapOfChar = new HashMap<>();
 
-            chars = chars.replace(" ", "").trim().toLowerCase();
-            doc = doc.replace(" ", "").trim().toLowerCase();
+        int lengthOfDoc = doc.length();
+        int lengthOfChars = chars.length();
+        char charKeyOfMap;
+        int freqValOfMap = 1;
 
+        for (int i = 0; i < lengthOfChars; i++) {
+            charKeyOfMap = chars.charAt(i);
 
-            char[] charsArray = chars.toCharArray();
-            char[] docArray = doc.toCharArray();
-
-            Arrays.sort(charsArray);
-            Arrays.sort(docArray);
-            String sorted = new String(charsArray);
-            String sorted2 = new String(docArray);
-
-
+            if (!mapOfChar.containsKey(charKeyOfMap))
+                mapOfChar.put(charKeyOfMap, freqValOfMap);
+            else {
+                mapOfChar.replace(charKeyOfMap,mapOfChar.get(charKeyOfMap)+1);
+            }
         }
+
+        for (int i = 0; i < lengthOfDoc; i++) {
+            charKeyOfMap = chars.charAt(i);
+
+            if (!mapOfDoc.containsKey(charKeyOfMap))
+                mapOfDoc.put(charKeyOfMap, freqValOfMap);
+            else {
+                mapOfDoc.replace(charKeyOfMap,mapOfDoc.get(charKeyOfMap)+1);
+            }
+        }
+
+        if(mapOfChar.)
 
         return true;
 
