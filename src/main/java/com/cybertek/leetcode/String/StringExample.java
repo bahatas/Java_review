@@ -48,9 +48,24 @@ public class StringExample {
     //document = "Cydeo Java Developer!"
 
     /**
-     * charactrerss must be same ?
+     * characters must be same ?
      * spaces  are counted?
      * is it sorted ?
+     *
+     * Stringde ilk sorulmasi geren sey case sensitivie mi?
+     *Spaceler ayri bir karakter olacarak degerlendirilecek mi ?
+     * String buffer kullanilmasi gerekir mi ?
+     *
+     * Special karakterler dikkate alincak mi?
+     * Bos olmasi gerektiginde ?
+     *
+     * Sorulardan sonra :
+     * Ikinci asama?
+     *
+     *
+     * Bir yerde frekans soruluyorsa bizi set ya da mape yonlendiriyor demektir..
+     * Asil ulasmak istedigimiz yer burasi mi >?
+     *
      */
 
 
@@ -79,18 +94,17 @@ public class StringExample {
             while (sortedDoc.length()>0) {
 
                 if (sortedChar.indexOf(sortedDoc.charAt(0)) != -1){
-                    sortedDoc = sortedDoc.replace(sortedDoc.charAt(0) + "", ""); // replace all chars in sortedChars with empty string if fail return false if success return true
-                    sortedChar = sortedChar.replace(sortedChar.charAt(0) + "", ""); // replace all chars in sortedChars with empty string if fail return false if success return true
+
+                    sortedDoc = sortedDoc.replaceFirst(sortedDoc.charAt(0) + "", ""); // replace all chars in sortedChars with empty string if fail return false if success return true
+                    sortedChar = sortedChar.replaceFirst(sortedChar.charAt(0) + "", ""); // replace all chars in sortedChars with empty string if fail return false if success return true
+
                 }
 
 
 
             }
+            return true;
 
-            if (sortedDoc.length() > 0) return false;
-            else {
-                return true;
-            }
 
 
         }
@@ -100,7 +114,9 @@ public class StringExample {
 
     public static boolean isGenerated2(String chars, String doc) {
 /**
+ *
  * O(N) time
+ *
  */
 
 
@@ -134,6 +150,9 @@ public class StringExample {
                 }
             }
 
+            /**
+             * get or default methodu varmis map de o value
+             */
             try {
                 for (char k : mapOfDoc.keySet()) {
 
@@ -152,35 +171,6 @@ public class StringExample {
 
     }
 
-    public static boolean isGenerated3(String chars, String doc) {
-        if (chars.equals(doc)) return true;
-        else {
-
-            char[] charsArray = chars.toCharArray();
-            char[] docArray = doc.toCharArray();
-
-            Arrays.sort(charsArray);
-            Arrays.sort(docArray);
-            String sortedChar = new String(charsArray);
-            String sortedDoc = new String(docArray);
-
-            int freqchar = 0;
-            int freqDoc = 0;
-
-            for (int i = 0; i < sortedChar.length() - 1; i++) {
-
-
-            }
-            for (int j = 0; j < sortedDoc.length() - 1; j++) {
-
-
-            }
-
-        }
-
-        return true;
-
-    }
 
 
     public static boolean isGenerated4(String chars, String doc) {
