@@ -3,6 +3,8 @@ package com.cybertek.leetcode.String;
 import com.cybertek.stream.excercises.sort.Sort;
 
 import java.security.cert.CollectionCertStoreParameters;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -21,10 +23,18 @@ public class StringExample {
         String doc = "{}:@~<>?";
 
 
-        System.out.println(isGenerated(characters,document));
+        long start = System.nanoTime();
+        Instant start2 = Instant.now();
+        System.out.println(isGenerated(characters, document));
+        long end = System.nanoTime();
+        Instant end2 = Instant.now();
+        long elapsedTime = end - start;
+        Duration elapsedTime2 = Duration.between(end2, start2);
+        System.out.println("elapsedTime = " + elapsedTime);
+        System.out.println("elapsedTime2 = " + elapsedTime2.toMillis());
+
+
         System.out.println(isGenerated(chars, doc));
-
-
 
 
     }
@@ -37,8 +47,13 @@ public class StringExample {
      * spaces  are counted?
      * is it sorted ?
      */
+
+
     public static boolean isGenerated(String chars, String doc) {
 
+        /**
+         * arrays sort --> O(n log(n)).
+         */
         if (chars.equals(doc)) return true;
         else {
 
@@ -46,15 +61,17 @@ public class StringExample {
             doc = doc.replace(" ", "").trim().toLowerCase();
 
 
-            char[] chars1 = chars.toCharArray();
-            char[] chars2 = doc.toCharArray();
+            char[] charsAr = chars.toCharArray();
+            char[] docAr = doc.toCharArray();
 
-            Arrays.sort(chars1);
-            Arrays.sort(chars2);
-            String sorted = new String(chars1);
-            String sorted2 = new String(chars2);
+            Arrays.sort(charsAr);
+            Arrays.sort(docAr);
 
-            return sorted.equals(sorted2);
+            String sortedChar = new String(charsAr);
+            String sortedDoc = new String(docAr);
+
+            return sortedChar.contains(sortedDoc);
+
         }
 
     }
@@ -121,10 +138,27 @@ public class StringExample {
         return true;
 
     }
-    public static int ansiNumber(char c){
 
-        return (byte) c;
+
+    public static boolean isGenerated4(String chars, String doc) {
+
+        if (doc.equals("")) return true;
+        if (chars.length() < doc.length()) return false;
+
+        int i = 0, j = 0;
+        char[] charArr = chars.toCharArray();
+        char[] docArr = doc.toCharArray();
+        Arrays.sort(charArr);
+        Arrays.sort(docArr);
+
+        while (i < charArr.length && j < docArr.length) {
+            if (charArr[i++] == docArr[j]) j++;
+        }
+        return j == docArr.length;
+
     }
+
+
 }
     /*
     public class GenerateDocument {
