@@ -1,8 +1,8 @@
 package com.cybertek.leetcode.String;
 
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Anagram {
 
@@ -16,17 +16,11 @@ public class Anagram {
         List<String> words = List.of("yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp");
         System.out.println(words);
         System.out.println(groupAnagram(words));
-        System.out.println(groupAnagram2(words));
     }
 
 
     static List<List<String>> groupAnagram(List<String> words) {
         List<List<String>> result = new ArrayList<>();
-        Map<Integer, String> wordMap = new HashMap<>();
-
-        for (String w : words) {
-            wordMap.put(words.indexOf(w), w);
-        }
 
         var collect = words.stream()
                 .map(e -> {
@@ -37,30 +31,26 @@ public class Anagram {
                 .map(e -> new String(e))
                 .collect(Collectors.toList());
 
-        List<String> collect2 = List.copyOf(collect);
-
-        while (collect.size() != 0) {
-
-
-            List<String> innerList = new ArrayList<String>();
-            innerList.add(words.get(collect2.indexOf(collect.get(0))));
-
-            for (int j = 1; j < collect.size(); j++) {
-
-                if (collect.get(0).equals(collect.get(j))) {
+        List<String> numberList = new ArrayList<>();
+        IntStream.range(0,words.size()).forEach(e->numberList.add(String.valueOf(e)));
 
 
-                    innerList.add(words.get(collect2.indexOf(collect.get(j))));
-                    collect.remove(j);
+        for (int i = 0; i<collect.size(); i++) {
 
+            List<String> innerList = new ArrayList<>();
 
+            innerList.add(words.get(i));
+
+            for (int j = i+1; j < collect.size(); j++) {
+
+                if (collect.get(i).equals(collect.get(j))) {
+                    innerList.add(words.get(j));
+                    collect.set(j,j+"");
                 }
-
             }
-
-            collect.remove(0);
-
+            collect.set(i,i+"");
             result.add(innerList);
+            if(collect.equals(numberList)) break;
         }
 
 
@@ -71,15 +61,33 @@ public class Anagram {
     static List<List<String>> groupAnagram2(List<String> words) {
         List<List<String>> result = new ArrayList<>();
 
-        words.stream()
-                .map(String::toCharArray)
-                .map(e -> List.of(e).stream()
-//                        .map(ch->)
-//                        .reduce(0, (a, b) -> )
-                )
-                .collect(Collectors.toList());
+        List wordList= new ArrayList();
+
+        String string = "Techie Delight";
+        List<Character> chars = new ArrayList<>();
 
 
+
+        for(String w : words){
+
+            for (char ch: w.toCharArray()) {
+                chars.add(ch);
+            }
+
+        }
+
+
+//        List<Stream<Integer>> collect = words.stream()
+//                .map(String::toCharArray)
+//                .map(e -> List.of(e).stream()
+//                                .map(ch -> int(ch))
+//                        // .reduce(0, (a, b) -> )
+//                ).collect(Collectors.toList());
+
+
+
+
+       // System.out.println("collect = " + collect);
 
         return result;
 
