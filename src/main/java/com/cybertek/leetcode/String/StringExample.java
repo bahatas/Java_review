@@ -194,7 +194,8 @@ public class StringExample {
 
 
 }
-    /*
+    /**
+     * Matt  abi
     public class GenerateDocument {
 
     public static void main(String[] args) {
@@ -274,3 +275,113 @@ public class StringExample {
 }
 ```||
      */
+
+
+/**
+ * Fatih hoca
+ *
+ * public class GenerateDocument_Optimalsolution {
+ *
+ *     // O(n + m) time | O(c) space - where n is the number of characters, m is
+ *     // the length of the document, and c is the number of unique characters in the
+ *     // characters string
+ *     public static void main(String[] args) {
+ *         String characters= "veDJaCyd vaeo perelo xw!";
+ *         String document="Cydeo Java Developer!";
+ *
+ *         System.out.println((generateDocumentOptimal(characters, document)));
+ *     }
+ *     public static boolean generateDocumentOptimal(String characters, String document) {
+ *         HashMap<Character, Integer> characterCounts = new HashMap<Character, Integer>();
+ *         for (int idx = 0; idx < characters.length(); idx++) {
+ *             char character = characters.charAt(idx);
+ *             characterCounts.put(character, characterCounts.getOrDefault(character, 0) + 1);
+ *         }
+ *         for (int idx = 0; idx < document.length(); idx++) {
+ *             char character = document.charAt(idx);
+ *             if (!characterCounts.containsKey(character) || characterCounts.get(character) ==0) {
+ *             return false;
+ *         }
+ *         characterCounts.put(character, characterCounts.get(character) - 1);
+ *     }
+ *  return true;
+ * }
+ * }
+ *
+ * 1
+ * [8:10 PM]
+ * public class GenerateDocument_BruteForceSolution {
+ *     public static void main(String[] args) {
+ *         String characters= "veDJaCyd vaeo perelo xw!";
+ *         String document="Cydeo Java Developer!";
+ *
+ *         System.out.println((generateDocumentBruteForce(characters, document)));
+ *     }
+ *         public static boolean generateDocumentBruteForce(String ch, String doc) {
+ *             for (int idx = 0; idx < doc.length(); idx++) {
+ *                 char character = doc.charAt(idx);
+ *                 int documentFrequency = countCharacterFrequency(character, doc);
+ *                 int charactersFrequency = countCharacterFrequency(character, ch);
+ *                 if (documentFrequency > charactersFrequency) {
+ *                     return false;
+ *                 }
+ *             }
+ *             return true;
+ *         }
+ *         public static int countCharacterFrequency(char character, String target) {
+ *             int frequency = 0;
+ *             for (int idx = 0; idx < target.length(); idx++) {
+ *                 char c = target.charAt(idx);
+ *                 if (c == character) {
+ *                     frequency += 1;
+ *                 }
+ *             }
+ *             return frequency;
+ *         }
+ *
+ *
+ * }
+ * [8:10 PM]
+ * import java.util.HashSet;
+ * import java.util.Set;
+ *
+ * public class GenerateDocument_Solution2 {
+ *     public static void main(String[] args) {
+ *         String characters= "veDJaCyd vaeo perelo xw!";
+ *         String document="Cydeo Java Developer!";
+ *
+ *         System.out.println((generateDocumentSolution2(characters, document)));
+ *     }
+ *     // O(c * (n + m)) time | O(c) space - where n is the number of characters,
+ *     // the length of the document, and c is the number of unique characters in
+ *     // document
+ *     public static boolean generateDocumentSolution2(String characters, String document) {
+ *         Set<Character> alreadyCounted = new HashSet<Character>();
+ *         for (int idx = 0; idx < document.length(); idx++) {
+ *             char character = document.charAt(idx);
+ *             if (alreadyCounted.contains(character)) {
+ *                 continue;
+ *             }
+ *             int documentFrequency = countCharacterFrequency(character, document);
+ *             int charactersFrequency = countCharacterFrequency(character, characters);
+ *             if (documentFrequency > charactersFrequency) {
+ *                 return false;
+ *             }
+ *             alreadyCounted.add(character);
+ *         }
+ *         return true;
+ *     }
+ *     public static int countCharacterFrequency(char character, String target) {
+ *         int frequency = 0;
+ *         for (int idx = 0; idx < target.length(); idx++) {
+ *             char c = target.charAt(idx);
+ *             if (c == character) {
+ *                 frequency += 1;
+ *             }
+ *         }
+ *         return frequency;
+ *     }
+ *
+ *
+ * }
+ */
