@@ -13,9 +13,11 @@ public class Anagram {
         */
     public static void main(String[] args) {
 
-        List<String> words = List.of("yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp");
+        List<String> words = List.of("yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp","tac","ang");
+        List<String> words2 = List.of("yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp","tac","ang","gan","nag");
         System.out.println(words);
         System.out.println(groupAnagram(words));
+        System.out.println(groupAnagram(words2));
     }
 
 
@@ -32,23 +34,30 @@ public class Anagram {
                 .collect(Collectors.toList());
 
         List<String> numberList = new ArrayList<>();
-        IntStream.range(0,words.size()).forEach(e->numberList.add(String.valueOf(e)));
+        //IntStream.range(0,words.size()).forEach(e->numberList.add(String.valueOf(e)));
+        IntStream.range(0,words.size()).forEach(e->numberList.add(""));
 
 
         for (int i = 0; i<collect.size(); i++) {
 
             List<String> innerList = new ArrayList<>();
 
-            innerList.add(words.get(i));
+            if(!collect.get(i).isBlank()){
+                innerList.add(words.get(i));
+
+            }else {
+                continue;
+            }
 
             for (int j = i+1; j < collect.size(); j++) {
 
-                if (collect.get(i).equals(collect.get(j))) {
+                if ( collect.get(i).equals(collect.get(j)) ) {
+
                     innerList.add(words.get(j));
-                    collect.set(j,j+"");
+                    collect.set(j,"");
                 }
             }
-            collect.set(i,i+"");
+            collect.set(i,"");
             result.add(innerList);
             if(collect.equals(numberList)) break;
         }
