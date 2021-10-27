@@ -7,8 +7,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Stream;
-
 public class StringExample {
+
 
 
     public static void main(String[] args) {
@@ -44,9 +44,9 @@ public class StringExample {
 
     }
 
+
     //characters = "!veDJaCyd vaeo perelo xw"
     //document = "Cydeo Java Developer!"
-
     /**
      * characters must be same ?
      * spaces  are counted?
