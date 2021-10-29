@@ -8,12 +8,52 @@ public class ArrayProduct {
     public static void main(String[] args) {
         int[] arrayGiven = {1,3,5,8};
         System.out.println("Arrays.toString(arrayGiven) = " + Arrays.toString(arrayGiven));
-        System.out.println(Arrays.toString(returnArray(arrayGiven)));
+
         System.out.println("array2 " + Arrays.toString(returnArray2(arrayGiven)));
         System.out.println("array3 " + Arrays.toString(returnArray3(arrayGiven)));
-        returnArray3(arrayGiven);
         flatMap();
+        returnArray4(arrayGiven);
+
     }
+
+    public static int[] arrayOfProducts(int[] array) {
+        int[] products = new int[array.length];
+        int leftRunningProduct = 1;
+        for (int i = 0; i < array.length; i++) {
+            products[i] = leftRunningProduct;
+            leftRunningProduct *= array[i];
+        }
+        int rightRunningProduct = 1;
+        for (int i = array.length - 1; i >= 0; i--) {
+            products[i] *= rightRunningProduct;
+            rightRunningProduct *= array[i];
+        }
+        return products;
+    }
+
+
+    public static int[] productArray(int[] arr){
+
+        int length = arr.length;
+
+        int[] left = new int[length];
+        int[] right = new int[length];
+        int[] result = new int[length];
+
+        left[0]= 1;
+        right[length-1] = 1;
+
+        for(int i=1;i<length;i++){
+            left[i] = left[i-1]*arr[i-1];
+            right[length-i-1] = right[length-i]*arr[length-i];
+        }
+
+        for(int i=0;i<length;i++)
+            result[i] = left[i] * right[i];
+
+        return result;
+    }
+
 
     public static  int[] returnArray(int[] array){
 

@@ -1,5 +1,11 @@
 package com.cybertek.leetcode.crackingBook.arraysAndStrings;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Q001_IsUnique {
 
     /**
@@ -11,8 +17,9 @@ public class Q001_IsUnique {
     public static void main(String[] args) {
 
         String str = "abcabnjdier";
-        //System.out.println("isUniqueChars(str) = " + isUniqueChars(str));
+        System.out.println("isUniqueChars(str) = " + isUniqueChars(str));
         System.out.println("isUniqueChar2(str) = " + isUniqueChars2(str));
+        System.out.println("isUniqueChar3(str) = " + isUniqueChars3(str));
     }
 
     static boolean isUniqueChars(String str){
@@ -66,4 +73,12 @@ public class Q001_IsUnique {
      * These solutions are not as optimal in some respects, but might be better depending on the constraints of
      * the problem.
      */
+
+    static boolean isUniqueChars3(String str){
+
+        List<String> collect = Stream.of(str)
+                .distinct().collect(Collectors.toList());
+        return collect.equals(Collections.singletonList(str));
+    }
+
 }
