@@ -10,7 +10,9 @@ public class Algo_5TwoNumberOfSum {
 
     public static void main(String[] args) {
 
-//        int[] givenArray = {3, 5, -4, 8, 11, 1, -1, 6,4};
+//       int[] givenArray = {3, 5, -4, 8, 11, 1, -1, 6,4};
+//        Sample Output
+//        [-1, 11] // the numbers could be in reverse order
         int[] givenArray = {5,5,5};
         int[] givenArray2 = {0,10};
         int targetSum = 10;
@@ -19,8 +21,6 @@ public class Algo_5TwoNumberOfSum {
         System.out.println("Arrays.toString(getArray2(givenArray,10)) = " + Arrays.toString(getArray2(givenArray, targetSum)));
         System.out.println("Arrays.toString(getArray3(givenArray,10)) = " + Arrays.toString(getArray3(givenArray, targetSum)));
         System.out.println("Arrays.toString(getArray3(givenArray2,10)) = " + Arrays.toString(getArray3(givenArray2, targetSum)));
-        //Sample Output
-        //[-1, 11] // the numbers could be in reverse order
 
 
     }
@@ -39,7 +39,7 @@ public class Algo_5TwoNumberOfSum {
      outer:
      for(int i = givenArray.length-1; i>=0; i--){
          for(int j = i-1; j>=0; j --){
-             if(givenArray[i]+givenArray[j]==10) {
+             if(givenArray[i]+givenArray[j]==target) {
                  result[0] = givenArray[i];
                  result[1] = givenArray[j];
                  break outer;
