@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class Algo_5TwoNumberOfSumTest {
+public class Algo_5TwoNumberOfSumTest extends TestCase {
 
     @Test
     public void testGetArray() {

@@ -1,5 +1,8 @@
 package com.cybertek.leetcode.crackingBook.arraysAndStrings;
 
+
+import java.util.Locale;
+
 public class Q004_PalindromePermutation {
 
     /**
@@ -13,8 +16,10 @@ public class Q004_PalindromePermutation {
      */
     public static void main(String[] args) {
 
-        String given = "Tact Cao";
-
+        String given = "Tact Cao".toLowerCase(Locale.ROOT);
+        System.out.println("canPermutePalindrome(\"aab\") = " + canPermutePalindrome("aab"));
+        System.out.println("canPermutePalindrome(\"code\") = " + canPermutePalindrome("code"));
+        System.out.println("canPermutePalindrome(given) = " + canPermutePalindrome(given));
     }
 
 
@@ -76,6 +81,26 @@ public class Q004_PalindromePermutation {
         }
         return table;
     }
+
+
+    //This algorithm takes O ( N) time, where N is the length of the string.
+
+    public static boolean canPermutePalindrome(String s ){
+
+        int [] char_counts = new int[128];
+        for (int i = 0; i <s.length() ; i++) {
+            char_counts[s.charAt(i)]++;
+        }
+
+        int count = 0;
+        for(int i=0; i<128;i++){
+            count+= char_counts[i] %2;
+        }
+        return count <=1;
+
+
+
+    }
+
 }
 
-//This algorithm takes O ( N) time, where N is the length of the string.
