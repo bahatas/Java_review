@@ -34,12 +34,11 @@ public class Algo_6ThreeNumberSum {
                innerArray[2]=nums[j];
 
             }
-            j++;i++,center++;
+//            j++;i++,center++;
 
         }
 
 
-        Stream.of(nums).flatMap(IntStream.range(0,3).())
         return result;
 
     }
