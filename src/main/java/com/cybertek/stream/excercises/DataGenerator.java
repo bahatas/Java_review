@@ -16,7 +16,7 @@ public class DataGenerator {
 
     public static Role adminRole = new Role(1, "Admin");
     public static Role managerRole = new Role(2, "Manager");
-    public static Role employeeRole = new Role(3, "Employee");
+    public static Role employeeRole = new Role(3, "Employee");                                                                                                 
     public static Role supervisorRole = new Role(5, "Supervisor");
     public static Role ceoRole = new Role(6, "Chief Executive Officer");
     public static Role cfoRole = new Role(7, "Chief Financial Officer");

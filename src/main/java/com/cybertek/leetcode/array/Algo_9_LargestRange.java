@@ -56,14 +56,16 @@ public class Algo_9_LargestRange {
     }
 
     static int[] largestInterval2(int[] given) {
+
         int[] result = new int[2];
+
         List<Stack<Integer>> list = new ArrayList<>();
         Stack<Integer> innerStack = new Stack<>();
         Arrays.sort(given);
+
         innerStack.push(given[0]);
 
         for(int num :given){
-
             if(num==innerStack.peek()) continue;
 
             if(num==innerStack.peek()+1){
@@ -78,38 +80,20 @@ public class Algo_9_LargestRange {
         System.out.println("list: "+ list);
 
 
-        Arrays.stream(Arrays.stream(list.stream()
-                .max(Comparator.comparingInt(Stack::size))
-                .get()
-                .toArray()).collect(Collectors.toList()).stream()
+
+        Stream.of(list).max(Comparator.comparingInt(value -> Stack.size(value))).get()
 
 
+//        return
+//        Arrays.stream(Arrays.stream(list.stream()
+//                .max(Comparator.comparingInt(Stack::size))
 //                .map(each ->
 //                        Stream.of(each)
 //                                .filter(e -> e.peek().equals(e.firstElement()) && e.peek().equals(e.lastElement()))
-//
+//                                .collect(Collectors.toList())
 //                ).get().toArray()
 //        ).toArray();
-
-        System.out.println("Arrays.toString(objects) = " + Arrays.toString(objects));
-
-
-        // System.out.println("collect = " + collect);
-
-        int[] ints = new int[0];
-        try{
-          ints  = IntStream.range(0, given.length )
-                    .filter(each ->  given[each + 1]-given[each] == 1 || given[each - 1] == given[each] - 1)
-                    .map(num -> num = given[num])
-                    .toArray();
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("e = " + e);
-        }
-        System.out.println("Arrays.toString(ints) = " + Arrays.toString(ints));
-        
-
         return result;
-
     }
 }
 /**
