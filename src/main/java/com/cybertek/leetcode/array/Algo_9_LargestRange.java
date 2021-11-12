@@ -81,7 +81,7 @@ public class Algo_9_LargestRange {
 
 
 
-        Stream.of(list).max(Comparator.comparingInt(value -> Stack.size(value))).get()
+//        Stream.of(list).max(Comparator.comparingInt(value -> Stack.size(value))).get()
 
 
 //        return

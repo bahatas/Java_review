@@ -1,5 +1,6 @@
-package examples.algoQuestions;
+package com.cybertek.leetcode.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Alg11_PatternMatcher {
@@ -15,7 +16,10 @@ public class Alg11_PatternMatcher {
 
     static String[] patternMatcher(String pattern, String given) {
         String[] result = new String[2];
+        String firstWord,secondWord;
+
         HashMap<Character,Integer> hm = new HashMap<>();
+
 
         int freqCounter =1;
         hm.put(pattern.charAt(0),1);
@@ -49,11 +53,17 @@ public class Alg11_PatternMatcher {
         if(!patternFreq.contains("2") && pattern.length()%2==0){
            return result;
         }else{
-            if(!patternFreq.contains("2")){
+            if(patternFreq.contains("2")){
 
-                for(int i = 0; i<given.length();i++){
-                    if(given.charAt(i)== given.charAt(i+i)){
+                for(int i = 0; i<given.length()-i;i++){
+                    if(given.substring(0,i).equals(given.substring(i,i+i))){
 
+                        firstWord=given.substring(0,i);
+                        result[0]=firstWord;
+
+                        secondWord=given.replace(firstWord,"");
+
+                        result[1]=given.replace(firstWord,"")
                     }
                 }
             }else{
@@ -61,6 +71,7 @@ public class Alg11_PatternMatcher {
             }
         }
 
+        System.out.println("Arrays.toString(result) = " + Arrays.toString(result));
         return result;
     }
 
