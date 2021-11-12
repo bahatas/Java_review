@@ -19,7 +19,7 @@ public class Alg11_PatternMatcher {
 
         int freqCounter =1;
         hm.put(pattern.charAt(0),1);
-        String patternFreq=""+pattern.charAt(0);//x
+        String patternFreq="";//x
 
         for (int i = 0; i < pattern.length()-1; i++) {
 
@@ -33,20 +33,28 @@ public class Alg11_PatternMatcher {
         System.out.println("hm "+hm);
 
 
-        for (int i = 1; i < pattern.length(); i++) {
+        for (int i = 0; i < pattern.length()-1; i++) {
+            //char lastCharOfPatternFreq = patternFreq.charAt(patternFreq.length()-1);
 
-            char lastCharOfPatternFreq = patternFreq.charAt(patternFreq.length()-1);
-
-            if(pattern.charAt(i)==lastCharOfPatternFreq){ //last char of pattern is dublicated?
+            if(pattern.charAt(i)==pattern.charAt(i+1)){ //last char of pattern is dublicated?
                freqCounter++;
-
+               continue;
             }else {
+                patternFreq+=""+freqCounter+pattern.charAt(i);
                 freqCounter=1;
             }
-            patternFreq+=""+freqCounter+pattern.charAt(i);
-
         }
-        System.out.println(patternFreq); //x2x1y1x2x1y
+        System.out.println("patternFreq="+patternFreq); //x2x1y1x2x1y--> 2x1y2x1y
+
+        if(!patternFreq.contains("2") && pattern.length()%2==0){
+           return result;
+        }else{
+            if(!patternFreq.contains("2")){
+
+            }else{
+
+            }
+        }
 
         return result;
     }
