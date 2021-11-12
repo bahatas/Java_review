@@ -45,7 +45,6 @@ public class LongestSubstring {
         for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
             Character rightChar = str.charAt(windowEnd);
 
-
            if (map.containsKey(rightChar)){
                map.replace(rightChar,(map.get(rightChar))+1);
                windowStart=Math.max(windowStart,map.get(rightChar)+1);
@@ -54,7 +53,6 @@ public class LongestSubstring {
                maxLength+=1;
                map.put(rightChar,freq);
            }
-
 
         }
         return maxLength;

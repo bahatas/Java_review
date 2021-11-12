@@ -12,6 +12,7 @@ public class Algo10_Array_ReverseString {
         System.out.println("reverseString3(given) = " + reverseString3(given));
         System.out.println("reverseString3(str1) = " + reverseString3(str1));
         System.out.println("reverseString4(given) = " + reverseString4(given));
+        System.out.println("reverseString5(str1) = " + reverseString5(str1));
     }
 
     static String reverseString(String given) {
@@ -100,6 +101,24 @@ public class Algo10_Array_ReverseString {
         return result.trim();
     }
 
+
+    static String reverseString5(String given) {
+
+        String eachWord = "";
+        Deque<String> deque = new ArrayDeque<>();
+        for (int i = 0; i < given.length(); i++) {
+            while (i < given.length() && given.charAt(i) != ' ') {
+                eachWord += given.charAt(i);
+                i++;
+            }
+            deque.push(eachWord);
+            eachWord = "";
+
+            if (i < given.length()) deque.push(given.charAt(i) + "");
+
+        }
+        return deque.stream().reduce("", (a, b) -> a + b);
+    }
 }
 
 /**
