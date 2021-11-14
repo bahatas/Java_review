@@ -1,4 +1,4 @@
-package examples;
+package com.cybertek.leetcode.array;
 
 import java.util.HashMap;
 

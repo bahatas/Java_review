@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Alg11_PatternMatcher {
     public static void main(String[] args) {
 
-        String pattern = "xxyxxy"; //2x1y2x1y
-        String given = "gogopowerrangergogopowerranger";
+        String pattern = "xxxyxxxy"; //2x1y2x1y
+        String given = "gogogopowerrangergogogopowerranger";
 
         patternMatcher(pattern,given);
 
@@ -16,65 +16,61 @@ public class Alg11_PatternMatcher {
 
     static String[] patternMatcher(String pattern, String given) {
         String[] result = new String[2];
-        String firstWord,secondWord;
+        String firstWord, secondWord;
 
-        HashMap<Character,Integer> hm = new HashMap<>();
+        HashMap<Character, Integer> hm = new HashMap<>();
 
+        int freqCounter = 1;
+        hm.put(pattern.charAt(0), 1);
+        String patternFreq = "";//x
 
-        int freqCounter =1;
-        hm.put(pattern.charAt(0),1);
-        String patternFreq="";//x
+        for (int i = 0; i < pattern.length() - 1; i++) {
 
-        for (int i = 0; i < pattern.length()-1; i++) {
+            if (pattern.charAt(i) == pattern.charAt(i + 1)) { //last char of pattern is dublicated?
+                hm.replace(pattern.charAt(i), hm.get(pattern.charAt(i)) + 1);
 
-            if(pattern.charAt(i)==pattern.charAt(i+1)){ //last char of pattern is dublicated?
-              hm.replace(pattern.charAt(i), hm.get(pattern.charAt(i))+1);
-
-            }else {
-                hm.put(pattern.charAt(i),1);
+            } else {
+                hm.put(pattern.charAt(i), 1);
             }
         }
-        System.out.println("hm "+hm);
 
 
-        for (int i = 0; i < pattern.length()-1; i++) {
+        for (int i = 0; i < pattern.length() - 1; i++) {
             //char lastCharOfPatternFreq = patternFreq.charAt(patternFreq.length()-1);
 
-            if(pattern.charAt(i)==pattern.charAt(i+1)){ //last char of pattern is dublicated?
-               freqCounter++;
-               continue;
-            }else {
-                patternFreq+=""+freqCounter+pattern.charAt(i);
-                freqCounter=1;
+            if (pattern.charAt(i) == pattern.charAt(i + 1)) { //last char of pattern is dublicated?
+                freqCounter++;
+                continue;
+            } else {
+                patternFreq += "" + freqCounter + pattern.charAt(i);
+                freqCounter = 1;
             }
         }
-        System.out.println("patternFreq="+patternFreq); //x2x1y1x2x1y--> 2x1y2x1y
+        System.out.println("patternFreq=" + patternFreq); //x2x1y1x2x1y--> 2x1y2x1y
 
-        if(!patternFreq.contains("2") && pattern.length()%2==0){
-           return result;
-        }else{
-            if(patternFreq.contains("2")){
+        if (!patternFreq.contains("2") && pattern.length() % 2 == 0) {
+            return result;
+        } else {
+            if (patternFreq.contains("2")) {
 
-                for(int i = 0; i<given.length()-i;i++){
-                    if(given.substring(0,i).equals(given.substring(i,i+i))){
+                for (int i = 0; i < given.length() - i; i++) {
+                    if (given.substring(0, i).equals(given.substring(i, i + i))) {
 
-                        firstWord=given.substring(0,i);
-                        result[0]=firstWord;
+                        firstWord = given.substring(0, i);
+                        result[0] = firstWord;
 
-                        secondWord=given.replace(firstWord,"");
+                        secondWord = given.replace(firstWord, "");
+                        secondWord.substring(0, secondWord.length() / 2);
 
-                        result[1]=given.replace(firstWord,"")
+                        result[1] = secondWord.substring(0, secondWord.length() / 2);
                     }
                 }
-            }else{
-
             }
+
+            System.out.println("Arrays.toString(result) = " + Arrays.toString(result));
+            return result;
         }
-
-        System.out.println("Arrays.toString(result) = " + Arrays.toString(result));
-        return result;
     }
-
     static String[] patternMatcher2(String pattern, String given) {
 
         String[] result = new String[2];
