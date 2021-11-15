@@ -1,6 +1,7 @@
 package com.cybertek.leetcode.array;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class ALgo12_SmallestDifference {
     public static void main(String[] args) {
@@ -27,9 +28,12 @@ public class ALgo12_SmallestDifference {
 
     static int[] getSmallestDiffPair2(int[] firstArr, int[] secondArr) {
 
-        int[] result = new int[2];
+      int[] mergedArray = new int [firstArr.length+secondArr.length];
+      Arrays.stream(firstArr).flatMap(each->Arrays.stream(secondArr));
+      //  Stream.of(firstArr,secondArr).flatMap(each->Arrays.stream())
 
 
+        int[] result = new int[0];
         return result;
     }
 }
