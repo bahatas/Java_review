@@ -1,10 +1,9 @@
 package com.cybertek.leetcode.array;
 
+import com.cybertek.leetcode.ALGO_QS.Algo_5TwoNumberOfSum;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 public class Algo_5TwoNumberOfSumTest extends TestCase {
 

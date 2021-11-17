@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class Project extends BaseEntity {
 
   private String projectCode;

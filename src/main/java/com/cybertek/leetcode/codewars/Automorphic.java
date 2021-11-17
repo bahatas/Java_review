@@ -1,7 +1,6 @@
 package com.cybertek.leetcode.codewars;
 
-import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
+
 
 import java.math.BigInteger;
 import java.util.logging.Logger;

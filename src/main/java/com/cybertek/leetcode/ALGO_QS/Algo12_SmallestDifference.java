@@ -1,9 +1,10 @@
-package com.cybertek.leetcode.array;
+package com.cybertek.leetcode.ALGO_QS;
 
 import java.util.*;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class ALgo12_SmallestDifference {
+public class Algo12_SmallestDifference {
     public static void main(String[] args) {
 
         int[] arrayOne = {-1, 5, 10, 20, 28, 3};
@@ -28,9 +29,15 @@ public class ALgo12_SmallestDifference {
 
     static int[] getSmallestDiffPair2(int[] firstArr, int[] secondArr) {
 
+        Map<Integer,Integer> hm = new HashMap<>();
+        IntStream.of(firstArr).map(e->hm.put(e,1));
+        System.out.println(hm);
+
+
       int[] mergedArray = new int [firstArr.length+secondArr.length];
       Arrays.stream(firstArr).flatMap(each->Arrays.stream(secondArr));
       //  Stream.of(firstArr,secondArr).flatMap(each->Arrays.stream())
+
 
 
         int[] result = new int[0];
