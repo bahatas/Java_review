@@ -1,4 +1,4 @@
-package com.cybertek.leetcode.array;
+package com.cybertek.leetcode.ALGO_QS;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -114,6 +114,7 @@ public class ArrayProduct {
         int[] ar1 = {1,2,3};
         int[] ar2 = {1,2,3};
 
+        System.out.println("Flat map");
         System.out.println(Arrays.toString (
                 IntStream.range(0, ar1.length)
                         .flatMap(x -> Arrays.stream(ar2).map(i -> ar1[x] + i))

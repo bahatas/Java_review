@@ -1,4 +1,4 @@
-package com.cybertek.leetcode.array;
+package com.cybertek.leetcode.ALGO_QS;
 
 public class Algo_8MergeOverLappingIntervals {
 

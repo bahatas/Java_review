@@ -1,9 +1,9 @@
-package com.cybertek.leetcode.array;
+package com.cybertek.leetcode.ALGO_QS;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Algo10 {
+public class Algo10_ReverseString {
 
     public static void main(String[] args) {
         String str1 = "   hello    welcome  with me       to java  ";

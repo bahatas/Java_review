@@ -1,9 +1,8 @@
 package com.cybertek.leetcode.array;
 
+import com.cybertek.leetcode.ALGO_QS.Algo_6ThreeNumberSum;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class Algo_6ThreeNumberSumTest {
 
