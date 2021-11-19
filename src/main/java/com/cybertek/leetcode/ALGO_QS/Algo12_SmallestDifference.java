@@ -1,4 +1,4 @@
-package com.cybertek.leetcode.array;
+package com.cybertek.leetcode.ALGO_QS;
 
 import java.util.*;
 import java.util.function.Function;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class ALgo12_SmallestDifference {
+public class Algo12_SmallestDifference {
     public static void main(String[] args) {
 
         int[] arrayOne = {-1, 5, 10, 20, 28, 3};

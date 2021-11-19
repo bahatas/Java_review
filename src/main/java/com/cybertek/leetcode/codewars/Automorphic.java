@@ -1,21 +1,13 @@
 package com.cybertek.leetcode.codewars;
 
-
-
 import java.math.BigInteger;
 import java.util.logging.Logger;
 
 public class Automorphic {
     static Logger log = Logger.getGlobal();
 
-
-
     public static void main(String[] arrays) {
         System.out.println("arrays[0] = " + arrays.length);
-
-
-
-
         System.out.println(log);
         log.info("This is message comes from logger");
         System.out.println("autoMorphic(25) = " + autoMorphic(25));
@@ -27,7 +19,6 @@ public class Automorphic {
         System.out.println("autoMorphic(225) = " + autoMorphic2(225));
         System.out.println("autoMorphic(425) = " + autoMorphi3(425));
         System.out.println("autoMorphic(399) = " + autoMorphic(399));
-
         System.out.println("arrays[0] = " + arrays[0]);
     }
 
@@ -44,10 +35,7 @@ public class Automorphic {
 
         String numString= String.valueOf(number);
         String numStringSq= String.valueOf(number*number);
-
-
         return   numStringSq.substring(numStringSq.length()-numString.length()).equals(numString)?"Automorphic" : "Not!!";
-
 
     }
 

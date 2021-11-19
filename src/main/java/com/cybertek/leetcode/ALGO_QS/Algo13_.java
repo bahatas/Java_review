@@ -5,63 +5,78 @@ import java.util.*;
 public class Algo13_ {
     public static void main(String[] args) throws Exception {
 
-        int [] giveArray = {1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};
-        int [] giveArray3 = {-8,-7,-6,-3,-2,0,-5,-10,6,4,6,7,8,9,5,4,3,2,1,0,-1,6};
+        int[] giveArray = {1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};
         int[] giveArray2 = {0, 10, 6, 5, -1, -3, 2, 3};
-        int[] giveArray4 = {5,4,3,2,1,2,3,4,5};
-        int[] giveArray5 = {5,5,5,5,5,5,99,5,5,5,};
-        int[] giveArray6 = {5,5,5,5,5};
-        //getLongestPeakSize(giveArray);
-        System.out.println("getLongestPeakSize(giveArray2) = " + getLongestPeakSize(giveArray2));
+        int[] giveArray3 = {-8, -7, -6, -3, -2, 0, -5, -10, 6, 4, 6, 7, 8, 9, 5, 4, 3, 2, 1, 0, -1, 6};
+        int[] giveArray4 = {5, 4, 3, 2, 1, 2, 3, 4, 5};
+        int[] giveArray5 = {5, 5, 5, 5, 5, 5, 99, 5, 5, 5,};
+        int[] giveArray6 = {5, 5, 5, 5, 5};
+        int[] giveArray7 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10};
+
         System.out.println("getLongestPeakSize(giveArray) = " + getLongestPeakSize(giveArray));
+        System.out.println("getLongestPeakSize(giveArray2) = " + getLongestPeakSize(giveArray2));
         System.out.println("getLongestPeakSize(giveArray3) = " + getLongestPeakSize(giveArray3));
         System.out.println("getLongestPeakSize(giveArray4) = " + getLongestPeakSize(giveArray4));
         System.out.println("getLongestPeakSize(giveArray5) = " + getLongestPeakSize(giveArray5));
         System.out.println("getLongestPeakSize(giveArray6) = " + getLongestPeakSize(giveArray6));
+        System.out.println("getLongestPeakSize(giveArray7) = " + getLongestPeakSize(giveArray7));
+        int[] arr1 = new int[]{1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};//6
+        System.out.println(Arrays.toString(arr1) + " ::: " + getLongestPeakSize(arr1));
+        int[] arr2 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10};//0
+        System.out.println(Arrays.toString(arr2) + " ::: " + getLongestPeakSize(arr2));
+        int[] arr3 = new int[]{1, 2, 3};//0
+        System.out.println(Arrays.toString(arr3) + " ::: " + getLongestPeakSize(arr3));
+        int[] arr4 = new int[]{3, 3, 3};//0
+        System.out.println(Arrays.toString(arr4) + " ::: " + getLongestPeakSize(arr4));
+        int[] arr5 = new int[]{-3, -13, -23};//0
+        System.out.println(Arrays.toString(arr5) + " ::: " + getLongestPeakSize(arr5));
+        int[] arr6 = new int[]{-3, 3, 1, 2, 3, -10, -18, 7};//5
+        System.out.println(Arrays.toString(arr6) + " ::: " + getLongestPeakSize(arr6));
+
     }
-
-
 
     static int getLongestPeakSize(int[] given) {
-        int left = given[0];
-        int peak = given[0];
-        int right = given[0];
+        int left, peak, right;
+        left = peak = right = given[0];
+        List<Integer> peakSizeList = new ArrayList<>();
+        int sizeCounter = 0;
 
-        List<Integer> peakSizeList =new ArrayList<>();
-        int sizeCounter=0;
+        for (int idx = 1; idx < given.length - 1; idx++) { //  --> {1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};  {5,4,3,2,1,2,3,4,5};  //{5,5,5,5,5};
 
-        for(int idx =1; idx<given.length-1;idx++){
+            int previousPointer = given[idx - 1];
             int pointer = given[idx];
-            int previousPointer = given[idx-1];
-            int nextPointer = given[idx +1];
+            int nextPointer = given[idx + 1];
 
-            if(pointer>previousPointer){
-
-                if(pointer<nextPointer){
+            if (pointer > previousPointer) {
+                if (pointer < nextPointer) {
                     sizeCounter++;
-                }else if(pointer>nextPointer){
-                    peak=pointer;
-                    right=nextPointer;
+                } else if (pointer > nextPointer) {
+                    peak = pointer;
+                    right = nextPointer;
                     sizeCounter++;
                 }
-            }else if(pointer<previousPointer){
-                if(pointer>nextPointer && peak!=left){
-                    right=nextPointer;
+            } else if (pointer < previousPointer) {
+                if (pointer > nextPointer && peak != left) {
+                    right = nextPointer;
                     sizeCounter++;
-                }else{
-                    peakSizeList.add(sizeCounter+2);
-                    left=right=peak=pointer; sizeCounter=0;
+                } else {
+                    peakSizeList.add(sizeCounter + 2);
+                    left = right = peak = pointer;
+                    sizeCounter = 0;
                 }
-            }else{
-                peakSizeList.add(sizeCounter+2);
-                left=right=peak=pointer; sizeCounter=0;
+            } else {
+                if (peak != right) {
+                    peakSizeList.add(sizeCounter + 2);
+                    left = right = peak = pointer;
+                    sizeCounter = 0;
+                } else {
+                    sizeCounter = 0;
+                }
             }
-
-
         }
-        System.out.println("peakSizeList = " + peakSizeList);
-        return peakSizeList.stream().filter(e->e>2).max(Integer::compareTo).orElse(0);
+        return peakSizeList.stream().filter(e -> e > 2).max(Integer::compareTo).orElse(0);
     }
+
     static int getLongestPeakSize2(int[] given) throws Exception {
 
         int left = given[0];
@@ -69,34 +84,36 @@ public class Algo13_ {
         int right = given[0];
 
         List<Integer> initialNums = List.of(left, peak, right);
-        List<Map<Integer,Integer>> updates = new ArrayList<>();
-        Map<Integer,Integer> hm = new HashMap<>();
-        hm.put(left,0);hm.put(peak,0);hm.put(right,0);
+        List<Map<Integer, Integer>> updates = new ArrayList<>();
+        Map<Integer, Integer> hm = new HashMap<>();
+        hm.put(left, 0);
+        hm.put(peak, 0);
+        hm.put(right, 0);
 
         if (given.length < 3) throw new Exception("Given array argument is not available");
 
         int idx = 1;
         while (idx < given.length - 1) {
             int pointer = given[idx];
-            int previousPointer = given[idx-1];
+            int previousPointer = given[idx - 1];
 
             if (pointer > peak) {
                 peak = pointer;
-                hm.replace(peak,pointer);
-                right=pointer;
+                hm.replace(peak, pointer);
+                right = pointer;
 
                 idx++;
                 continue;
 
             } else if (pointer < peak) {
-                if(pointer<right){
-                    right=pointer;
-                    hm.replace(right,pointer);
+                if (pointer < right) {
+                    right = pointer;
+                    hm.replace(right, pointer);
                     idx++;
                     continue;
-                }else {
-                    right=previousPointer;
-                    hm.replace(right,previousPointer);
+                } else {
+                    right = previousPointer;
+                    hm.replace(right, previousPointer);
                     idx++;
 
                     continue;
@@ -114,13 +131,13 @@ public class Algo13_ {
         System.out.println("hm = " + hm);
         System.out.println("left = " + left);
         System.out.println("right = " + right);
-        int l = Arrays.binarySearch(given,left);
+        int l = Arrays.binarySearch(given, left);
         System.out.println("l = " + l);
-        int r = Arrays.binarySearch(given,right);
+        int r = Arrays.binarySearch(given, right);
         System.out.println("r = " + r);
 
 
-        return r-l+1;
+        return r - l + 1;
     }
 }
 
