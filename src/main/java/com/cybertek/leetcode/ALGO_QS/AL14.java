@@ -11,6 +11,7 @@ public class AL14 {
 
         String string = "clementisacap"; //mentisac
         getLongestSub(string);
+        getLongestSubstring(string);
     }
 
     static String getLongestSub(String given ){
@@ -47,16 +48,19 @@ public class AL14 {
         String result ="";
         int maxL=0;
         for(int i=0; i<given.length();i++){
-            int previousPointer = given.charAt(i-1);
             char pointer = given.charAt(i);
-            int nextPointer = given.charAt(i+1);
+
             boolean isUniqe = subStr.contains(given.charAt(i)+"");
 
-            if(isUniqe){
+            if(!isUniqe){
                 subStr+=pointer;
+                continue;
             }
-            result=(result.length()>subStr.length())?subStr:result;
+            result=(result.length()<subStr.length())?subStr:result;
+            i--;
+
             maxL=Math.max(maxL,subStr.length());
+            subStr="";
         }
 
         return result;
