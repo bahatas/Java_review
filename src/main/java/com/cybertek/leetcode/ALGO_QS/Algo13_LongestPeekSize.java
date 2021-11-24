@@ -2,7 +2,7 @@ package com.cybertek.leetcode.ALGO_QS;
 
 import java.util.*;
 
-public class Algo13_ {
+public class Algo13_LongestPeekSize {
     public static void main(String[] args) throws Exception {
 
         int[] giveArray = {1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};

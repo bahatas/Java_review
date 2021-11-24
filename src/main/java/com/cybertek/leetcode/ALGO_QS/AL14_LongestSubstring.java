@@ -6,12 +6,16 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class AL14 {
+public class AL14_LongestSubstring {
     public static void main(String[] args) {
 
         String string = "clementisacap"; //mentisac
-        getLongestSub(string);
-        getLongestSubstring(string);
+
+        //System.out.println("getLongestSub(string) = " + getLongestSub(string));
+        System.out.println("getLongestSubstring(string) = " + getLongestSubstring(string));
+        System.out.println("bbbbbbb = " + getLongestSubstring("babbbbb"));
+        System.out.println("bbbb = " + getLongestSubstring("bbbb"));
+        System.out.println("abc= " + getLongestSubstring("abc"));
     }
 
     static String getLongestSub(String given ){
@@ -44,22 +48,22 @@ public class AL14 {
     }
     static String getLongestSubstring (String given){
 
-        String subStr ="";
+        String subStr =""+given.charAt(0);
         String result ="";
-        int maxL=0;
-        for(int i=0; i<given.length();i++){
+        for(int i=1; i<given.length();i++){
             char pointer = given.charAt(i);
+            boolean notContains = !subStr.contains(given.charAt(i)+"");
+            boolean lastChardublicated = subStr.substring(subStr.length()).equals(given.charAt(i)+"");
 
-            boolean isUniqe = subStr.contains(given.charAt(i)+"");
-
-            if(!isUniqe){
+            if(notContains){
                 subStr+=pointer;
                 continue;
             }
+            else if(lastChardublicated){
+                subStr="";
+                continue;
+            }
             result=(result.length()<subStr.length())?subStr:result;
-            i--;
-
-            maxL=Math.max(maxL,subStr.length());
             subStr="";
         }
 
@@ -79,4 +83,27 @@ public class AL14 {
  * string = "clementisacap"
  * Sample Output
  * "mentisac"
+ */
+
+
+
+
+
+
+
+/**
+ *
+ # O(n) time  |  O(min(n, a))  space
+ def longestSubstringWithoutDuplication(string):
+ lastSeen = {}
+ longest = [0, 1] # Here 0 and 1 is the values in the 0 and 1 index. This variable stores the start and end index of of the longest string.
+ startIndex = 0
+ for i, char in enumerate(string):
+ if char in lastSeen:
+ startIndex = max(startIndex, lastSeen[char] + 1)
+ if longest[1] - longest[0] < i + 1 - startIndex: # Here 0 and 1 is the index of the value of longest array
+ longest = [startIndex, i + 1]
+ lastSeen[char] = i
+ return string[longest[0]:longest[1]]
+
  */
