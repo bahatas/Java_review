@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Algo_6ThreeNumberSum {
+public class Algo6_ThreeNumberSum {
     public static void main(String[] args) {
 
         int [] givenArray = {12,3,1,2,-6,5,-8,6};

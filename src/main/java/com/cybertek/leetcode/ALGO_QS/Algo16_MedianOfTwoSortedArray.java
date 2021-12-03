@@ -4,6 +4,10 @@ public class Algo16_MedianOfTwoSortedArray {
 
     public static void main(String[] args) {
 
+       int[] nums1 = {1,3};
+
+
+
     }
 
     static double findMedianfromArrays(int [] array1, int[] array2){
@@ -11,7 +15,42 @@ public class Algo16_MedianOfTwoSortedArray {
 
         return 0;
     }
+    static double medianOfTwoArrays1(int[] arr1, int[] arr2) {
+        //if arr1 length is greater than arr2, switch them so that arr1 is smaller than arr2
+        if (arr1.length > arr2.length) {
+            return medianOfTwoArrays1(arr2, arr1);
+        }
 
+        int x = arr1.length;
+        int y = arr2.length;
+
+        int low = 0;
+        int high = x;
+        while (low <= high) {
+            int partitionX = (low + high) / 2;
+            int partitionY = (x + y + 1) / 2 - partitionX;
+
+            int maxLeftX = partitionX == 0 ? Integer.MIN_VALUE : arr1[partitionX - 1];
+            int minRightX = partitionX == x ? Integer.MAX_VALUE : arr1[partitionX];
+
+            int maxLeftY = partitionY == 0 ? Integer.MIN_VALUE : arr2[partitionY - 1];
+            int minRightY = partitionY == y ? Integer.MAX_VALUE : arr2[partitionY];
+
+            if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+                if ((x + y) % 2 == 0) {
+                    return ((double) Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
+                } else {
+                    return (double) Math.max(maxLeftX, maxLeftY);
+                }
+            } else if (maxLeftX > minRightY) {
+                high = partitionX - 1;
+            } else {
+                low = partitionX + 1;
+            }
+
+        }
+        throw new IllegalArgumentException();
+    }
 }
 
 

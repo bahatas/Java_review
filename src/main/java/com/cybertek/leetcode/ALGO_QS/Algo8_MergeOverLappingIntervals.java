@@ -1,6 +1,6 @@
 package com.cybertek.leetcode.ALGO_QS;
 
-public class Algo_8MergeOverLappingIntervals {
+public class Algo8_MergeOverLappingIntervals {
 
     int[][] givenArray = {{1,2},{3,5},{4,7},{6,8},{9,10}};
 

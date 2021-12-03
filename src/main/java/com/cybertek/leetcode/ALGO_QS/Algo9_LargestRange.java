@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Algo_9_LargestRange {
+public class Algo9_LargestRange {
     public static void main(String[] args) {
 
         int[] array = {1, 11, 3, 0, 13, 5, 2, 4, 10, 7, 12, 6,15,20};

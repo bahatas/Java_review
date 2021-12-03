@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class AL14_LongestSubstring {
+public class Algo14_LongestSubstring {
     public static void main(String[] args) {
 
         String string = "clementisacap"; //mentisac

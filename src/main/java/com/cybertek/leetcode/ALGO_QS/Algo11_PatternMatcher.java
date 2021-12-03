@@ -3,7 +3,7 @@ package com.cybertek.leetcode.ALGO_QS;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class Alg11_PatternMatcher {
+public class Algo11_PatternMatcher {
     public static void main(String[] args) {
 
         String pattern = "xxxyxxxy"; //2x1y2x1y

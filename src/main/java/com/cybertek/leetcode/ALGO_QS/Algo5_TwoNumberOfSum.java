@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Algo_5TwoNumberOfSum {
+public class Algo5_TwoNumberOfSum {
 
 
     public static void main(String[] args) {
