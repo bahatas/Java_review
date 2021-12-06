@@ -24,6 +24,8 @@ public class Algo17_RemoveDublicatesFromLinkedList {
     static LinkedList<Integer> removeDublicate3(LinkedList<Integer> given) {
          Iterator<Integer> it = given.iterator();
          int prev = it.next();
+
+         return null;
     }
 
 
@@ -64,6 +66,10 @@ class Node {
 
     Node(int value) {
         this.value = value;
+    }
+
+    public Node() {
+
     }
 }
 
