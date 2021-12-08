@@ -18,7 +18,10 @@ public class Algo18_SumOfTwoLinkedList {
 
     }
 
-    public Node addTwoNumbers(Node l1, Node l2)
+    /**
+     *This method is solution.
+     */
+    public Node addTwoNumbers3(Node l1, Node l2)
     {
         Node dummy=new Node(-1);
         Node ptr=dummy;
@@ -64,14 +67,16 @@ public class Algo18_SumOfTwoLinkedList {
         }
         return dummy.next; // dummy.next is our head
     }
+
+
+
+
     static Node getSumOfLinkedLists(Node nodeOne, Node nodeTwo ){
         Node result =null;
         Node current;
         Node next= null;
         int sum,carryValue,val1,val2;
         sum=carryValue=val1=val2=0;
-
-
         while(nodeOne !=null || nodeTwo != null){
             if(nodeOne!=null && nodeTwo!=null) {
                 sum= nodeOne.value+ nodeTwo.value+carryValue;
@@ -88,26 +93,16 @@ public class Algo18_SumOfTwoLinkedList {
             carryValue=(sum>=10)?1:0;
             sum%=10;
             current=new Node(sum);
-
-
-
-            val1=nodeOne==null?0:nodeOne.value;
-            val2=nodeTwo==null?0:nodeTwo.value;
-            sum=val1+val2+carryValue;
-            carryValue=(sum>10)?1:0;
-
-
-            current =  new Node(sum);
-
             result=current;
             current=current.next;
-            nodeOne=nodeOne.next;
-            nodeTwo=nodeTwo.next;
-
-
 
         }
         return null;
+
+
+
+
+
     }
      private static LinkedList<Integer> getSumOfLinkedLists(LinkedList<Integer> linkedListOne, LinkedList<Integer> linkedListTwo){
 
