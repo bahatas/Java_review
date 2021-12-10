@@ -31,34 +31,32 @@ public class Algo19_MergeTwoSortedList {
     }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode prevHead = new ListNode(-100,null);;
-        ListNode current = prevHead;
+//        ListNode prevHead = new ListNode(-100,null);;
+//        ListNode current = prevHead;
+//
+//        while(true){
+//
+//            if(list1.val<= list2.val){
+//
+//                current.next = new ListNode(list1.val);
+//                list1 = list1.next;
+//            } else if(true){
+//                current.next = new ListNode(list2.val);
+//                list2 = list2.next;
+//            }else if(list1!= null && list2!= null){
+//                current.next=new ListNode(Math.min(list1.val, list2.val));
+//                prevHead.next=current.next;
+//                current = current.next;
+//
+//            }else if(list1!=null && list2 == null){
+//                current.next=new ListNode(list1.val);
+//                list1 = list1.next;
+//            }
+//
+//        }
 
-        while(true){
+        return null;
 
-            if(list1.val<= list2.val){
-
-                current.next = new ListNode(list1.val);
-                list1 = list1.next;
-            }else{
-                current.next = new ListNode(list2.val);
-                list2 = list2.next;
-            }else
-                if(list1!= null && list2!= null){
-                current.next=new ListNode(Math.min(list1.val, list2.val));
-                prevHead.next=current.next;
-                current = current.next;
-
-            }else if(list1!=null && list2 == null){
-                current.next=new ListNode(list1.val);
-                list1 = list1.next;
-            }
-
-        }
-
-        current=current.next;
-
-        return prevHead.next;
     }
     public static ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
 
