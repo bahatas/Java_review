@@ -59,19 +59,22 @@ public class Algo17_RemoveDublicatesFromLinkedList {
 }
 
 
+// Definition for a Node.
 class Node {
+    public int value;
+    public Node next;
 
-    Node next;
-    int value;
+    public Node() {}
 
-    Node(int value) {
-        this.value = value;
+    public Node(int _val) {
+        value = _val;
     }
 
-    public Node() {
-
+    public Node(int _val, Node _next) {
+        value = _val;
+        next = _next;
     }
-}
+};
 
 
 /**

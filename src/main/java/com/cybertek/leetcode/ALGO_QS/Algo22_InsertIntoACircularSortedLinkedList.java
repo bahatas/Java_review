@@ -9,12 +9,12 @@ import java.util.stream.Stream;
 public class Algo22_InsertIntoACircularSortedLinkedList {
 
     public static void main(String[] args) {
-        ListNode n1  = new ListNode(0);
-        ListNode n2 = new ListNode(1);
-        ListNode n3  = new ListNode(2);
+        ListNode n1  = new ListNode(3);
+        ListNode n2 = new ListNode(3);
+        ListNode n3  = new ListNode(3);
         ListNode n4 = new ListNode(3);
-        ListNode n5 = new ListNode(4);
-        ListNode n6 = new ListNode(6);
+        ListNode n5 = new ListNode(3);
+        ListNode n6 = new ListNode(3);
         //5-->6
         //10-->0    0-->0/1
 
@@ -23,7 +23,7 @@ public class Algo22_InsertIntoACircularSortedLinkedList {
         n3.next=n4;
         n4.next=n5;
         n5.next=n6;
-        n6.next=n1;
+        n6.next = n1;
 
         LinkedList list = new LinkedList();
         list.add(n1);
@@ -33,8 +33,13 @@ public class Algo22_InsertIntoACircularSortedLinkedList {
         list.add(n5);
         list.add(n6);
 
-        System.out.println("insertNumberIntoCircular(n2,5) = " + insertNumberIntoCircular(n2,5).next.val);
-
+        System.out.println("insertNumberIntoCircular(n2,5) = " + insertNumberIntoCircular(n5, 6));
+        System.out.println(n1.next.val);
+        System.out.println(n2.next.val);
+        System.out.println(n3.next.val);
+        System.out.println(n4.next.val);
+        System.out.println(n5.next.val);
+        System.out.println(n6.next.val);
 
 
     }
@@ -45,31 +50,64 @@ public class Algo22_InsertIntoACircularSortedLinkedList {
         ListNode maxNode = given;
         ListNode curr = given;
 
-        if(given.next==given ) {
+        if (curr == null) {
+            insertNode.next = insertNode;
+            return insertNode;
+        }else if(given.next==given ) {
             given.next = insertNode;
             insertNode.next=given;
             return given;
-        }else if (curr == null) {
-            insertNode.next = insertNode;
-            return insertNode;
         }
 
-        while (curr.next != given) {
-            if (maxNode.next.val> maxNode.val) maxNode = maxNode.next;
+        do {
+            if (maxNode.next.val >= maxNode.val) maxNode = maxNode.next;
             if (insertNode.val <= curr.next.val && insertNode.val >= curr.val) {
                 curr.next = insertNode;
                 insertNode.next = curr.next;
                 break;
             }
-            curr=curr.next;
-
+            curr = curr.next;
         }
-
+        while (curr != given);
         if(insertNode.val>= maxNode.val || insertNode.val==maxNode.next.val){
             insertNode.next=maxNode.next;
             maxNode.next=insertNode;
         }
-        return insertNode;
+        return given;
+
+
+    }
+
+    static Node insertNumberIntoCircular2(Node given, int insertVal) {
+
+        Node insertNode = new Node(insertVal);
+        Node maxNode = given;
+        Node curr = given;
+
+        if (curr == null) {
+            insertNode.next = insertNode;
+            return insertNode;
+        }else if(given.next==given ) {
+            given.next = insertNode;
+            insertNode.next=given;
+            return given;
+        }
+
+        do {
+            if (maxNode.next.value >= maxNode.value) maxNode = maxNode.next;
+            if (insertNode.value <= curr.next.value && insertNode.value >= curr.value) {
+                curr.next = insertNode;
+                insertNode.next = curr.next;
+                break;
+            }
+            curr = curr.next;
+        }
+        while (curr != given);
+        if(insertNode.value>= maxNode.value || insertNode.value==maxNode.next.value){
+            insertNode.next=maxNode.next;
+            maxNode.next=insertNode;
+        }
+        return given;
 
     }
 }
@@ -131,6 +169,59 @@ public class Algo22_InsertIntoACircularSortedLinkedList {
 
 
 
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node next;
 
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, Node _next) {
+        val = _val;
+        next = _next;
+    }
+};
+*/
+
+class Solution {
+    public Node insert(Node head, int insertVal) {
+        if (head == null) {
+            Node node = new Node(insertVal, null);
+            node.next = node;
+            return node;
+        }
+
+        Node prev = head;
+        Node curr = head.next;
+        boolean insertPlaceFound = false;
+
+        do {
+            if (prev.value <= insertVal && insertVal <= curr.value) {
+                insertPlaceFound= true;
+            } else if (prev.value > curr.value) {
+
+                if (insertVal >= prev.value || insertVal <= curr.value)
+                    insertPlaceFound = true;
+            }//elseif
+
+            if (insertPlaceFound) {
+                prev.next = new Node(insertVal, curr);
+                return head;
+            } //endif
+
+            prev = curr;
+            curr = curr.next;
+
+        }  while(prev!=head) ;
+
+        prev.next = new Node(insertVal, curr);
+        return head;
+    }
+}
 
 
