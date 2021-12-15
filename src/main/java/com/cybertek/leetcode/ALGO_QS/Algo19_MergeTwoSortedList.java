@@ -30,38 +30,61 @@ public class Algo19_MergeTwoSortedList {
         ListNode listNode = mergeTwoLists(l11, l21);
     }
 
-    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-//        ListNode prevHead = new ListNode(-100,null);;
-//        ListNode current = prevHead;
-//
-//        while(true){
-//
-//            if(list1.val<= list2.val){
-//
-//                current.next = new ListNode(list1.val);
-//                list1 = list1.next;
-//            } else if(true){
-//                current.next = new ListNode(list2.val);
-//                list2 = list2.next;
-//            }else if(list1!= null && list2!= null){
-//                current.next=new ListNode(Math.min(list1.val, list2.val));
-//                prevHead.next=current.next;
-//                current = current.next;
-//
-//            }else if(list1!=null && list2 == null){
-//                current.next=new ListNode(list1.val);
-//                list1 = list1.next;
-//            }
-//
-//        }
+    /**
+     * LeetCode solution
+     */
+    class Solution {
+        public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+            // maintain an unchanging reference to node ahead of the return node.
+            ListNode prehead = new ListNode(-1);
 
-        return null;
+            ListNode prev = prehead;
+            while (l1 != null && l2 != null) {
+                if (l1.val <= l2.val) {
+                    prev.next = l1;
+                    l1 = l1.next;
+                } else {
+                    prev.next = l2;
+                    l2 = l2.next;
+                }
+                prev = prev.next;
+            }
+
+            // At least one of l1 and l2 can still have nodes at this point, so connect
+            // the non-null list to the end of the merged list.
+            prev.next = l1 == null ? l2 : l1;
+
+            return prehead.next;
+        }
+    }
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode prevHead = new ListNode(-100, null);
+        ListNode current = prevHead;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                current.next = list1;
+                list1 = list1.next;
+            } else {
+                current.next = list2;
+                list2 = list2.next;
+            }
+            current = current.next;
+        }
+        while (list1 != null) {
+            current.next = list1;
+            list1 = list1.next;
+            current = current.next;
+        }
+        while (list2 != null) {
+            current.next = list2;
+            list2 = list2.next;
+            current = current.next;
+        }
+        return prevHead.next;
 
     }
-    public static ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
-
-
-
+        public static ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
 
         int value = -100;
         value= Math.min(list1.val, list2.val);
@@ -115,8 +138,36 @@ public class Algo19_MergeTwoSortedList {
         return dummy;
     }
 
+    public ListNode mergeTwoLists_(ListNode list1, ListNode list2) {
+    ListNode temp = new ListNode(0);
+    ListNode curr = temp;
 
+    while(list1!=null && list2!=null){
+        if(list1.val <= list2.val){
+            curr.next = list1;
+            list1 = list1.next;
+        }
+        else{
+            curr.next = list2;
+            list2 = list2.next;
+        }
+        curr = curr.next;
+    }
+    while(list1!=null){
+        curr.next = list1;
+        list1 = list1.next;
+        curr = curr.next;
+    }
+    while(list2!=null){
+        curr.next = list2;
+        list2 = list2.next;
+        curr = curr.next;
+    }
+    return temp.next;
 }
+}
+
+
 
 
 //  Definition for singly-linked list.

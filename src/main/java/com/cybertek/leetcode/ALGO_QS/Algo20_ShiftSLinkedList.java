@@ -26,47 +26,84 @@ public class Algo20_ShiftSLinkedList {
         list.add(n6);
 
 //        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 2).value);
-        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 3).value);
+//        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead1(n1, 3).value);
+//        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 2).value);
         System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 0).value);
+        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 1).value);
+        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 2).value);
+        System.out.println("getShiftedHead(n1,2).value = " + getShiftedHead(n1, 3).value);
 
     }
 
+    static Node getShiftedHead1(Node given, int k) {
+        if (given == null || given.next == null) {
+            return given;
+        }
 
-    static Node getShiftedHead( Node given, int k){  // head = 0 -> 1 -> 2 -> 3 -> 4 -> 5 // the head node with value 0 k = 2
-//        int size=0;
-//        while(given.next!=null){
-//            given= given.next;
+        int size = 1;
+        while (given.next != null) {
+            given = given.next;
+            size++;
+        }
+
+        int shift_k = (Math.abs(k) > size) ? (k % size) : k;
+        shift_k = (k < 0) ? size - k : k;
+
+        Node prev = given;
+        Node curr = given;
+        // head = 0 -> 1 -> 2 -> 3 -> 4 -> 5 // the head node with value 0 k = 2
+        for (int i = 0; i < shift_k; i++) {
+            curr = given;
+            prev = given;
+            while (curr.next != null) {
+                prev = curr;
+                curr = curr.next;
+            }
+            prev.next = null;
+            curr.next = given;
+            given = curr;
+        }
+        System.out.println(given.value);
+
+        return given;
+    }
+
+    static Node getShiftedHead(Node given, int k) {  // head = 0 -> 1 -> 2 -> 3 -> 4 -> 5 // the head node with value 0 k = 2
+
+//        Node head = given;
+//        int size = 1;
+//        while (given.next != null) {
+//            given = given.next;
 //            size++;
 //        }
-//        if(k>size) k=size%k;
-        while (true){
+//        int shift_k = (Math.abs(k) > size) ? k % size : k;
+//        shift_k = (k < 0) ? size - shift_k : shift_k;
+//         int shift_k = (Math.abs(k) > size) ? k % size : k;
+        Node head = null;
+        while (true) {
             Node curr = given;
-            if(k==0) return given;
-            if(k>0){
-                while (true){
-                    curr= curr.next;
-                    if(curr.next.next==null){
-                        curr.next.next=given; //circular
-                        given= curr.next;
-                        curr.next=null;
-                        given=getShiftedHead(given,k-1);
+            if (k == 0){
+                return given;
+            } else {
+                while (true) {
+                    curr = curr.next;
+                    if (curr.next.next == null) {
+                        curr.next.next = given; //circular
+                        given = curr.next;
+                        curr.next = null;
+                         head = getShiftedHead(given, k - 1);
                         break;
                     }
-                }
-            }
-            if(k<0){
-                while(true){
-
                 }
             }
 
             break;
         }
-        return given;
+       return head;
     }
         static Node getShiftedHead2( Node given, int k){    // head = 0 -> 1 -> 2 -> 3 -> 4 -> 5 // the head node with value 0 k = 2
-                                                         //* Sample Output
-                                                            // * 4 -> 5 -> 0 -> 1 -> 2 -> 3 // the new head node with value 4
+            //* Sample Output
+            // * 4 -> 5 -> 0 -> 1 -> 2 -> 3 // the new head node with value 4
         int shift =0;
 
         Node head = null;
@@ -106,7 +143,9 @@ public class Algo20_ShiftSLinkedList {
          listTail.next = head;
          return newHead;
          }
- class LinkdList {
+
+
+    class LinkdList {
     public int value;
     public LinkdList next;
 
