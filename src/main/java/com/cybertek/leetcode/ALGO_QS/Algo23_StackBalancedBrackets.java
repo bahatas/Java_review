@@ -7,7 +7,8 @@ public class Algo23_StackBalancedBrackets {
 
     public static void main(String[] args) {
 
-        String given = "([])(){}(())()()";
+        String given = "([])(){}(())()()"; //true
+        String given2 = "[[()]{(]}]"; //false
         System.out.println("isBalanced(given) = " + isBalanced(given));
         System.out.println("isBalanced2(given) = " + isBalanced2(given));
         System.out.println("isBalanced3(given) = " + isBalanced3(given));
@@ -16,6 +17,70 @@ public class Algo23_StackBalancedBrackets {
 
     //open --> ([{
     //close--> )}]
+
+    static boolean isBalanced_(String given) {
+
+        boolean isBalanced;
+        String regex = "{}()[]";
+
+        String str = "";
+        for (int i = 0; i < given.length(); i++) {
+
+            char ch = given.charAt(i);
+            if (regex.contains(ch + "")) {
+                str += ch + "";
+            }
+        }
+        while (!regex.contains(str)) {
+            str.replace("{}", "");
+            str.replace("()", "");
+            str.replace("[]", "");
+        }
+        isBalanced = (str.length() == 0) ? true : false;
+
+        return isBalanced;
+    }
+
+    static boolean isBalanced1(String given) {
+
+        boolean isBalanced = true;
+        String openBrackets = "({[";
+        Stack<Character> openStack = new Stack<>();
+
+
+        for (int i = 0; i < given.length(); i++) {
+            if (openBrackets.contains(given.charAt(i) + "")) {
+                openStack.push(given.charAt(i));
+            } else if (given.charAt(i) == '}') {
+                if (openStack.peek() == '{') {
+                    openStack.pop();
+                } else {
+                    isBalanced = false;
+                }
+
+            } else if (given.charAt(i) == ']') {
+                if (openStack.peek() == '[') {
+                    openStack.pop();
+                } else {
+                    isBalanced = false;
+                }
+
+            } else if (given.charAt(i) == ')') {
+                if (openStack.peek() == '(') {
+                    openStack.pop();
+                } else {
+                    isBalanced = false;
+                }
+            }
+
+        }
+
+        if (!openStack.isEmpty()) {
+            isBalanced = false;
+        }
+
+        return isBalanced;
+    }
 
     static boolean isBalanced(String given) {
 
@@ -149,3 +214,4 @@ public class Algo23_StackBalancedBrackets {
  * Sample Output
  * true // it's balanced
  */
+
