@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 
-public class Alog24_DecodingStack {
+public class Algo24_DecodingStack {
 
     public static void main(String[] args) {
 
@@ -16,29 +16,32 @@ public class Alog24_DecodingStack {
         decoding(s);
         decoding(s2);
         decoding(s3);
-     decodeString(s);
-    decodeString(s2);
-    decodeString(s3);
+//     decodeString(s);
+//    decodeString(s2);
+//    decodeString(s3);
+//    }
+        int i = 0;
     }
-     int i =0;
-    public   String decodeString(String s ){
+     static String decodeString(String s){
 
         StringBuilder result = new StringBuilder();
+        int i = 0;
         while (i<s.length() && s.charAt(i) != ']'){
             if(Character.isDigit(s.charAt(i))){
                 int k=0;
-                while(i<s.length() && Character.isDigit(s.charAt(i)))
+                while(i<s.length() && Character.isDigit(s.charAt(i)));
                     k=k*10 +s.charAt(i++)-'0';
                 i++;
                 String r = decodeString(s);
                 while(k-->0)
-                    result.append(r);
+                    result.append(result);
 
                 i++;
             }else result.append(s.charAt(i++));
         }
 
-       return result.toString();
+//       return result.toString();
+            return "";
     }
 
     static  String decoding(String s ){
