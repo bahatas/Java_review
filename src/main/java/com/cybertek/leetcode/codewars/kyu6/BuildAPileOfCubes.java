@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class BuildAPileOfCubes {
+
+    public static void main(String[] args) {
+        System.out.println("findNb_(55100) = " + findNb_(55100));
+    }
     @Test
     public void test1() {
         assertEquals(2022, BuildAPileOfCubes.findNb(4183059834009L));
@@ -24,25 +28,30 @@ public class BuildAPileOfCubes {
     public void test5() {
         assertEquals(45, BuildAPileOfCubes.findNb(1071225L));
     }
-    public static long findNb_(long m) {
+    @Test
+    public void test6() {
+        assertEquals(55100, BuildAPileOfCubes.findNb(2304422822859511552L));
+    }
+    public static long findNb_(long i) {
         long sum =0; //sum of the cubes
-        long i = 1l; //counter
+         i = 55100; //counter
 
 
-        while(sum<m) {
+        while(i>0) {
             sum+=Math.pow(i, 3);
-            i++;
+            i--;
         }
 
 
-        return sum==m?i-1:-1;
+//        return sum==m?i-1:-1;
+        return sum;
     }
     public static long findNb(long m) {
         long n=1;
-        while (m!=0){
+        while (m>0){
             m-=Math.pow(n++,3);
         }
-        return (m==0)?n:-1;
+        return (m==0)?(long)n-1:-1;
     }
 }
 /**
