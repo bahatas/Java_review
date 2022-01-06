@@ -3,6 +3,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.math.BigInteger;
+
 public class BuildAPileOfCubes {
 
     public static void main(String[] args) {
@@ -46,12 +48,16 @@ public class BuildAPileOfCubes {
 //        return sum==m?i-1:-1;
         return sum;
     }
-    public static long findNb(long m) {
-        long n=1;
-        while (m>0){
-            m-=Math.pow(n++,3);
+    public static BigInteger findNb(BigInteger m) {
+        BigInteger n= BigInteger.valueOf(1);
+
+        while (n.isProbablePrime(0)){
+
+           m=m.subtract(n.pow(3));
+           n.add(BigInteger.valueOf(1));
         }
-        return (m==0)?(long)n-1:-1;
+        n.subtract(BigInteger.valueOf(1));
+        return (m.)?n: BigInteger.valueOf(-1);
     }
 }
 /**
