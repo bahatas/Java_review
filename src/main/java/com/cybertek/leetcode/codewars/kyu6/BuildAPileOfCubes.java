@@ -34,7 +34,19 @@ public class BuildAPileOfCubes {
     public void test6() {
         assertEquals(55100, BuildAPileOfCubes.findNb(2304422822859511552L));
     }
-    public static long findNb_(long i) {
+    @Test
+    public void test7() {
+        assertEquals(2022, BuildAPileOfCubes.findNb(4183059834009L));
+    }
+    @Test
+    public void test8() {
+        assertEquals(-1, BuildAPileOfCubes.findNb(24723578342962L));
+    }
+    @Test
+    public void test9() {
+        assertEquals(4824, BuildAPileOfCubes.findNb(135440716410000L));
+    }
+
         long sum =0; //sum of the cubes
          i = 55100; //counter
 
