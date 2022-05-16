@@ -40,7 +40,7 @@ public class ConcurrentTask {
                 },
                 () -> {
                     int a = 2;
-                    System.out.println("Callable 2 " +Thread.currentThread().getName()));
+                    System.out.println("Callable 2 " +Thread.currentThread().getName());
                     return a;
                 },
                 () -> {
