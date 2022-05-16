@@ -29,7 +29,6 @@ public class WhoLikeThis {
         }else if (names.length>3) {
             str =names[0]+", "+names[1] +" and "+(names.length-2)+" others"+" like this";
         }
-
         return str+ "";
     }
 }
