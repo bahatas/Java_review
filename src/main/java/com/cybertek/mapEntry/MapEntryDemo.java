@@ -35,5 +35,42 @@ public class MapEntryDemo {
         double balance = ((Double) hm.get("Zara")).doubleValue();
         hm.put("Zara", new Double(balance + 1000));
         System.out.println("Zara's new balance: " + hm.get("Zara"));
+
+
+
+        // creating HashMap.
+        Map<Integer, String> hash_map = new HashMap<Integer, String>();
+        // inserting sets.
+        hash_map.put(1, "Thor");
+        hash_map.put(2, "Iron man");
+        // iterating using for loop.
+        for (Map.Entry<Integer, String> set2 : hash_map.entrySet()) {
+            System.out.println(set2.getKey() + " = " + set2.getValue());
+        }
+
+        // creating hash_map.
+        Map<Integer, String> hash_map2 = new HashMap<Integer, String>();
+        // inserting sets in the hash_map.
+        hash_map.put(1, "Thor");
+        hash_map.put(2, "Iron man");
+        // iterating it using forEach.
+        hash_map.forEach((key,value) -> System.out.println(key + " = " + value));
+
+
+
+        // creating hash_map.
+        Map<Integer, String> hash_map3 = new HashMap<Integer, String>();
+        // inserting value.
+        hash_map.put(1, "Thor");
+        hash_map.put(2, "Iron man");
+        // setting up iterator.
+        Iterator<Map.Entry<Integer, String>> it = hash_map.entrySet().iterator();
+        // iterating every set of entry in the HashMap.
+        while (it.hasNext()) {
+            Map.Entry<Integer, String> set3 = (Map.Entry<Integer, String>) it.next();
+            System.out.println(set3.getKey() + " = " + set3.getValue());
+        }
+
+
     }
 }

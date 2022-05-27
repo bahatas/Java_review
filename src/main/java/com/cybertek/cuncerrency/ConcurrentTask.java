@@ -7,7 +7,10 @@ import java.util.stream.IntStream;
 
 public class ConcurrentTask {
 
+
     public static void main(String[] args) {
+
+
 
         Runnable run = () -> System.out.println("This is runnable print "+Thread.currentThread().getName());
         Thread t = new Thread(run);
@@ -94,5 +97,7 @@ public class ConcurrentTask {
 
     }
 
-
 }
+
+
+
