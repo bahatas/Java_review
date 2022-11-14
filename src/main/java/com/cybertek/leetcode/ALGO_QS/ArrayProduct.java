@@ -6,12 +6,13 @@ import java.util.stream.Stream;
 
 public class ArrayProduct {
     public static void main(String[] args) {
-        int[] arrayGiven = {1,3,5,8};
+        int[] arrayGiven = {1,2,3,4};
         System.out.println("Arrays.toString(arrayGiven) = " + Arrays.toString(arrayGiven));
 
+        System.out.println("arrayOfProducts " + Arrays.toString(arrayOfProducts(arrayGiven)));
         System.out.println("array2 " + Arrays.toString(returnArray2(arrayGiven)));
         System.out.println("array3 " + Arrays.toString(returnArray3(arrayGiven)));
-        flatMap();
+
         returnArray4(arrayGiven);
 
     }
@@ -32,23 +33,22 @@ public class ArrayProduct {
     }
 
 
-    public static int[] productArray(int[] arr){
+    public static int[] find(int[] num){
 
-        int length = arr.length;
 
-        int[] left = new int[length];
-        int[] right = new int[length];
-        int[] result = new int[length];
+        int[] left = new int[num.length];
+        int[] right = new int[num.length];
+        int[] result = new int[num.length];
 
         left[0]= 1;
-        right[length-1] = 1;
+        right[num.length-1] = 1;
 
-        for(int i=1;i<length;i++){
-            left[i] = left[i-1]*arr[i-1];
-            right[length-i-1] = right[length-i]*arr[length-i];
+        for(int i=1;i<num.length;i++){
+            left[i] = left[i-1]*num[i-1];
+            right[num.length-i-1] = right[num.length-i]*num[num.length-i];
         }
 
-        for(int i=0;i<length;i++)
+        for(int i=0;i<num.length;i++)
             result[i] = left[i] * right[i];
 
         return result;
@@ -110,16 +110,32 @@ public class ArrayProduct {
 
     }
 
-    static void flatMap(){
+    static void flatMap(int[][] grids){
         int[] ar1 = {1,2,3};
         int[] ar2 = {1,2,3};
+        int x= ar1.length;
+        int y= ar2.length;
+        String CLEAN = "clean";
+//        Arrays.stream(grids).flatMap(each-> Arrays.stream(Arrays.stream(each).map(value->3).toArray()).
+//        IntStream.range(0,x)
+//                    .flatMap(each ->
+//                            IntStream.range(0,y)).forEach({
+//                grids[each][]
+//        });
 
+//        Arrays.setAll(grids,each->{
+//            Arrays.setAll(grids[x],y->Enum.valueOf(Area.class,CLEAN));
+//        });
         System.out.println("Flat map");
         System.out.println(Arrays.toString (
                 IntStream.range(0, ar1.length)
-                        .flatMap(x -> Arrays.stream(ar2).map(i -> ar1[x] + i))
+                        .flatMap(n -> Arrays.stream(ar2).map(i -> ar1[x] + i))
                         .toArray ()));
 
+    }
+
+    enum Area{
+        CLEAN, DIRTY;
     }
 
 }
